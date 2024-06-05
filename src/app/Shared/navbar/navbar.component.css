@@ -1,0 +1,17 @@
+.active {
+  background-color: #0E3A5D;
+  color: #fff !important;
+}
+
+.navbar{
+    background-color: #0E3A5D !important;
+}
+a{
+  font-size: 115%;
+}
+
+nav{
+  overflow: hidden;
+  width: 100%;
+  margin-right: -10px;
+}

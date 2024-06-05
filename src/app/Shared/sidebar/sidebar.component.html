@@ -1,0 +1,25 @@
+<nav class="navbar bg-light shadow-lg sidebar rounded" style="background-color: rgba(255, 255, 255, 0.67) !important;">
+  <ul class="navbar-nav text-center w-100">
+    <li class="nav-item">
+      <a class="nav-link"  data-bs-toggle="collapse" (click)="toggleSubmenu('Gestion de Cliente')"
+         [ngClass]="{ 'active': activeLink === 'Gestion de Cliente' }">
+        Gestion de Cliente
+      </a>
+      
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"  data-bs-toggle="collapse" (click)="toggleSubmenu('Gestion de Cuenta')"
+         [ngClass]="{ 'active': activeLink === 'Gestion de Cuenta' }">
+        Gestion de Cuenta
+      </a>
+      
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"  data-bs-toggle="collapse" (click)="toggleSubmenu('Credito')"
+         [ngClass]="{ 'active': activeLink === 'Credito' }">
+        Credito
+      </a>
+      
+    </li>
+  </ul>
+</nav>

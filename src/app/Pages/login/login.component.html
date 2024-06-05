@@ -1,0 +1,59 @@
+<div class="d-lg-flex half">
+    <div id="contenedor-imagen" class="bg order-2 order-md-1">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-4 text-center">
+                        <img class="logo img-fluid" src="../../../assets/img/login/banquito.png" alt="Logo">
+                    </div>
+                    <div class="col-8 mt-5">
+                        <div class="row text-start">
+                            <p class="mt-0 fw-bold fs-1" style="color: #FFFFFF;">BANCO <br>BANQUITO</p>
+                        </div>
+                        <div class="row text-end">
+                            <p class="mt-0 fw-bold fs-3" style="color: #FFFFFF;">Ventanilla</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contents order-1 order-md-2">
+        <div class="container">
+
+            <div class="row align-items-center justify-content-center">
+
+                <div class="col-10 py-5 rounded" style="background-color: rgba(255, 255, 255, 0.67);">
+                    <form (ngSubmit)="loginUser()">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="mb-3 col-8" style="text-align: left;">
+                                Ingresa tu usuario
+                                <input type="email" class="form-control" name="usuario" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Usuario"
+                                    style="background-color: #D9D9D9;" [(ngModel)]="credenciales.usuario">
+
+                            </div>
+                            <div class="mb-3 col-8" style="text-align: left;">
+                                Ingresa tu contraseña
+                                <input type="password" class="form-control" name="clave" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Contrasena"
+                                    style="background-color: #D9D9D9;" [(ngModel)]="credenciales.clave">
+                                <div id="pwdlHelp" class="form-text"><a routerLink="#" class="text-warning">Olvide
+                                        mi contrasena</a></div>
+                            </div>
+                            <div id="accesoError" class="col-12 text-center form-text"
+                                *ngIf="!primeraVisita && !accesoValidacion">
+                                <p class="text-danger">Credenciales Incorrectas, por favor ingrese nuevamente</p>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-warning col-8 border rounded">Ingresar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
