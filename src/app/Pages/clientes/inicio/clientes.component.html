@@ -11,43 +11,48 @@
         <div class="sidebar-container col-3 p-3 d-flex flex-column" style="height: 86.9vh;">
             <app-sidebar class="flex-grow-1"></app-sidebar>
         </div>
-    
+
         <!-- Main Content -->
 
         <div class="col-9 p-3 d-flex">
-            
+
             <!-- Aquí puedes colocar el contenido principal -->
             <div class="p-4 flex-grow-1 rounded" style="background-color: rgba(255, 255, 255, 0.67);">
-                
-                <h1 class="ms-5 mt-5" style="color: #000000; font-size: 24px; font-weight: bold; padding-left:100px;">Busqueda de empresas</h1>
-                <div class="container d-flex flex-column align-items-center mt-5">
-                    <div class="d-flex justify-content-center">
-                        
-                        <div class="white-box-custom bigger-box">
-                            <a href="/clientes/crear" style="display: block; text-decoration: none; color: inherit;">
-                                <div class="row">
-                                    <img class="logo img-fluid pt-3" src="../../../assets/img/clientes/crear.png" alt="Logo">
+
+                <h1 class="ms-5 mt-2" style="color: #0000006e; font-size: 24px; font-weight: bold; padding-left:100px;">
+                    Recaudos > Recaudos en ventanilla</h1>
+
+                <div class="row contenido my-3 p-5 rounded-4">
+                    <h5>Busqueda de Empresas</h5>
+                    <hr>
+                    <form action="">
+                        <div class="form-group">
+                            
+
+                            <div class="row">
+                                <div class="col-10">
+                                    <input type="text" class="form-control my-2" placeholder="Ingrese el Nombre de la Empresa"
+                                        name="numero_identificacion">
+                                   
                                 </div>
-                                <div class="row text-center pt-4" style="color: #000000; font-size: 18px; font-weight: bold;">
-                                    <a>Crear Nuevo Cliente</a>
-                                </div>   
-                            </a>
-                        </div>                        
-                        
-                        <div class="white-box-custom bigger-box">
-                            <a href="/clientes/consultas" style="display: block; text-decoration: none; color: inherit;">
-                                <div class="row">
-                                    <img class="logo img-fluid pt-3" src="../../../assets/img/clientes/consultas.png" alt="Logo">
+                                <div class="col-2 d-flex align-items-center justify-content-center">
+                                    <button type="button" class="btn btn-success">Buscar</button>
                                 </div>
-                                <div class="row text-center pt-4" style="color: #000000; font-size: 18px; font-weight: bold;">
-                                    <p>Consultas</p>
-                                </div>
-                            </a>   
+                            </div>
+                            <hr>
+                            <input type="text" class="form-control my-4" placeholder="____" name="nombres"
+                                value="me xsjkd dkddm" readonly>
+                            <select class="form-select" name="cuentaP">
+                                <option value="asdad">Seleccione una cuenta</option>
+
+                                <option value="das">Seleccione una cuenta</option>
+                                <option value="adasd">Seleccione una cuenta</option>
+
+                            </select>
                         </div>
-
-
-                    </div>
+                    </form>
                 </div>
+                
             </div>
         </div>
     </div>

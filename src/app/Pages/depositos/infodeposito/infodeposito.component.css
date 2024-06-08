@@ -17,10 +17,6 @@ h4, h5{
 input[type=text], select{
     background-color: #ECECEC;
 }
-button {
-    float: right;
-    width: 100px;
-}
 
 /* Estilos para los cuadros blancos personalizados */
 .white-box-custom {

@@ -25,6 +25,10 @@ import { TablaAmortizacionComponent } from './Pages/tabla-amortizacion/tabla-amo
 import { EmpresaComponent } from './Pages/clientes/crear/empresa/empresa.component';
 import { ConsultaCuentaComponent } from './Pages/cuentas/consulta-cuenta/consulta-cuenta.component';
 import { CrearCuentaComponent } from './Pages/cuentas/crear-cuenta/crear-cuenta.component';
+import { BuscarcuentadepComponent } from './Pages/depositos/buscarcuentadep/buscarcuentadep.component';
+import { BuscarcuentaretComponent } from './Pages/retiros/buscarcuentaret/buscarcuentaret.component';
+import { IngresodepositoComponent } from './Pages/depositos/ingresodeposito/ingresodeposito.component';
+import { InfodepositoComponent } from './Pages/depositos/infodeposito/infodeposito.component';
 
 
 
@@ -48,7 +52,10 @@ import { CrearCuentaComponent } from './Pages/cuentas/crear-cuenta/crear-cuenta.
     EmpresaComponent,
     ConsultaCuentaComponent,
     CrearCuentaComponent,
-
+    BuscarcuentadepComponent,
+    BuscarcuentaretComponent,
+    IngresodepositoComponent,
+    InfodepositoComponent
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,10 @@ import { TablaAmortizacionComponent } from './Pages/tabla-amortizacion/tabla-amo
 import { ConsultaCuentaComponent } from './Pages/cuentas/consulta-cuenta/consulta-cuenta.component';
 import { CrearCuentaComponent } from './Pages/cuentas/crear-cuenta/crear-cuenta.component';
 import { loginGuard } from './Guards/login.guard';
+import { BuscarcuentadepComponent } from './Pages/depositos/buscarcuentadep/buscarcuentadep.component';
+import { BuscarcuentaretComponent } from './Pages/retiros/buscarcuentaret/buscarcuentaret.component';
+import { IngresodepositoComponent } from './Pages/depositos/ingresodeposito/ingresodeposito.component';
+import { InfodepositoComponent } from './Pages/depositos/infodeposito/infodeposito.component';
 
 // const routes: Routes = [
 //   { path:'' , component: LoginComponent },
@@ -53,7 +57,13 @@ const routes: Routes = [
   { path: 'cuentas/crear', component: CrearCuentaComponent,  }, 
   { path:'creditos', component: CreditosComponent, }, 
   { path:'creditos/amortizacion', component: TablaAmortizacionComponent}, 
+  { path:'depositos', component: BuscarcuentadepComponent}, 
+  { path:'depositos/ingresodeposito', component: IngresodepositoComponent}, 
+  { path:'depositos/infodeposito', component: InfodepositoComponent}, 
+  { path:'retiros', component: BuscarcuentaretComponent}, 
+  { path:'recuados', component: TablaAmortizacionComponent}, 
   { path: '**', redirectTo: '' }
+  
 ];
 
 @NgModule({
