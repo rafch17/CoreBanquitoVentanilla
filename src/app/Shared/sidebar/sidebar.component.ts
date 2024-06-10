@@ -15,6 +15,7 @@ export class SideBarComponent implements OnInit {
   ngOnInit(): void {
     this.activeLink = this.router.url; // Variable para almacenar el enlace activo
     console.log(this.activeLink);
+    
   }
   
 

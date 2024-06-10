@@ -29,6 +29,8 @@ import { BuscarcuentadepComponent } from './Pages/depositos/buscarcuentadep/busc
 import { BuscarcuentaretComponent } from './Pages/retiros/buscarcuentaret/buscarcuentaret.component';
 import { IngresodepositoComponent } from './Pages/depositos/ingresodeposito/ingresodeposito.component';
 import { InfodepositoComponent } from './Pages/depositos/infodeposito/infodeposito.component';
+import { IngresoretiroComponent } from './Pages/retiros/ingresoretiro/ingresoretiro.component';
+import { InforetiroComponent } from './Pages/retiros/inforetiro/inforetiro.component';
 
 
 
@@ -55,7 +57,9 @@ import { InfodepositoComponent } from './Pages/depositos/infodeposito/infodeposi
     BuscarcuentadepComponent,
     BuscarcuentaretComponent,
     IngresodepositoComponent,
-    InfodepositoComponent
+    InfodepositoComponent,
+    IngresoretiroComponent,
+    InforetiroComponent
   ],
   imports: [
     BrowserModule,

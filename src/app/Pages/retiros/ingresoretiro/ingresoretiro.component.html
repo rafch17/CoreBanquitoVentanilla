@@ -23,20 +23,31 @@
                   Retiros > Retiros en ventanilla</h1>
 
               <div class="row contenido my-3 p-5 rounded-4">
-                  <h5>Busqueda de Cuentas</h5>
+                  <h5>Información del Retiro</h5>
                   <hr>
                   <form action="">
                       <div class="form-group">
                           
-
                           <div class="row">
-                              <div class="col-12">
-                                  <input type="text" class="form-control my-2 rounded-pill" placeholder="Ingrese el Número de Cuenta"
+                            <div class="col-12">
+                              <div class="my-3"><b>CLIENTE: </b> Juan Perez</div>
+                              
+                              <div class="my-3"><b>N. CUENTA: </b> 002002000</div>
+
+
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-4">
+                              <b>Monto a depositar: </b> 
+                            </div>
+                              <div class="col-8">
+                                 <input type="text" class="form-control my-2 rounded-pill" placeholder="Ingrese el monto a depositar"
                                       name="numero_identificacion">
                                  
                               </div>
                               <div class="my-2 d-flex align-items-end justify-content-end">
-                                  <button type="button" class="btn btn-warning  rounded-pill" (click)="searchClient()">Buscar</button>
+                                  <button type="button" class="btn btn-warning  rounded-pill" (click)="makeDeposit()">Buscar</button>
                               </div>
                           </div>
                           <hr>

@@ -21,6 +21,8 @@ import { BuscarcuentadepComponent } from './Pages/depositos/buscarcuentadep/busc
 import { BuscarcuentaretComponent } from './Pages/retiros/buscarcuentaret/buscarcuentaret.component';
 import { IngresodepositoComponent } from './Pages/depositos/ingresodeposito/ingresodeposito.component';
 import { InfodepositoComponent } from './Pages/depositos/infodeposito/infodeposito.component';
+import { IngresoretiroComponent } from './Pages/retiros/ingresoretiro/ingresoretiro.component';
+import { InforetiroComponent } from './Pages/retiros/inforetiro/inforetiro.component';
 
 // const routes: Routes = [
 //   { path:'' , component: LoginComponent },
@@ -60,7 +62,9 @@ const routes: Routes = [
   { path:'depositos', component: BuscarcuentadepComponent}, 
   { path:'depositos/ingresodeposito', component: IngresodepositoComponent}, 
   { path:'depositos/infodeposito', component: InfodepositoComponent}, 
-  { path:'retiros', component: BuscarcuentaretComponent}, 
+  { path:'retiros', component: BuscarcuentaretComponent},
+  { path:'retiros/ingresoretiro', component: IngresoretiroComponent}, 
+  { path:'retiros/inforetiro', component: InforetiroComponent}, 
   { path:'recuados', component: TablaAmortizacionComponent}, 
   { path: '**', redirectTo: '' }
   

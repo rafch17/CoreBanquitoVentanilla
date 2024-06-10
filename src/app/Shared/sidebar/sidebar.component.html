@@ -2,21 +2,21 @@
   <ul class="navbar-nav text-center w-100">
     <li class="nav-item">
       <a class="nav-link"  data-bs-toggle="collapse" (click)="navigateTo('depositos')"
-         [ngClass]="{ 'active': activeLink === '/depositos' }">
+         [ngClass]="{ 'active': activeLink.includes('depositos') }">
         Depósitos
       </a>
       
     </li>
     <li class="nav-item">
       <a class="nav-link"  data-bs-toggle="collapse" (click)="navigateTo('retiros')"
-         [ngClass]="{ 'active': activeLink === '/retiros' }">
+         [ngClass]="{ 'active': activeLink.includes('retiros')  }">
         Retiros
       </a>
       
     </li>
     <li class="nav-item">
       <a class="nav-link"  data-bs-toggle="collapse" (click)="navigateTo('recaudos')"
-         [ngClass]="{ 'active': activeLink === '/recaudos' }">
+         [ngClass]="{ 'active': activeLink.includes('recaudos') }">
         Recaudos
       </a>
       

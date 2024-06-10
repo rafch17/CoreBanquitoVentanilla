@@ -1,0 +1,58 @@
+<div class="container-fluid p-0">
+  <div class="row">
+    <!-- Navbar -->
+    <div class="col-12 px-0" class="borde-ancho">
+      <app-navbar></app-navbar>
+    </div>
+  </div>
+
+  <div class="row m-0" style="background-color: #0E3A5D;">
+    <!-- Sidebar -->
+    <div class="sidebar-container col-3 p-3 d-flex flex-column" style="height: 86.9vh;">
+      <app-sidebar class="flex-grow-1"></app-sidebar>
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="col-9 p-3 d-flex">
+
+      <!-- Aquí puedes colocar el contenido principal -->
+      <div class="p-4 flex-grow-1 rounded" style="background-color: rgba(255, 255, 255, 0.67);">
+
+        <h1 class="ms-5 mt-2" style="color: #0000006e; font-size: 24px; font-weight: bold; padding-left:100px;">
+          Retiros > Retiros en ventanilla</h1>
+
+        <div class="row contenido my-3 p-5 rounded-4">
+          <h5>Información del Retiro</h5>
+          <hr>
+          <form action="">
+            <div class="form-group">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-12 text-center "><b>CLIENTE: </b> Juan Perez</div>
+                  <div class="col-12 text-center "><b>N. CUENTA: </b> 002002000</div>
+                  <div class="col-12 text-center "><b>CLIENTE: </b> Juan Perez</div>
+                  <div class="col-12 text-center "><b>N. CUENTA: </b> 002002000</div>
+                  <div class="col-12 text-center "><b>CLIENTE: </b> Juan Perez</div>
+                  <div class="col-12 text-center "><b>N. CUENTA: </b> 002002000</div>
+                  <div class="col-12 text-center "><b>CLIENTE: </b> Juan Perez</div>
+                  <div class="col-12 text-center "><b>N. CUENTA: </b> 002002000</div>
+                </div>
+                <div class="my-2 d-flex  justify-content-center">
+                  <button type="button" class="btn btn-lg btn-warning  rounded-pill" (click)="makeNewDebit()">Nuevo
+                    Retiro</button>
+                </div>
+              </div>
+
+              
+
+              <hr>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
