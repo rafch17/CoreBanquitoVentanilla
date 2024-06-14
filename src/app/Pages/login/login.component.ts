@@ -3,6 +3,7 @@ import { SegUsuarioService } from 'src/app/Servicios/seg-usuario.service';
 import { Router } from '@angular/router';
 import { FlujoDatosService } from 'src/app/Servicios/flujo-datos.service';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/Servicios/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,47 +17,40 @@ export class LoginComponent implements OnInit{
     "clave": "",
     "tipo" : "BackOffice"
   }
+  userName: string = '';
+  password: string = '';
+  errorMessage: string = '';
   primeraVisita = true;
   accesoValidacion = false;
 
-  constructor(private segUsuarioService: SegUsuarioService, private router: Router, private flujoDatos: FlujoDatosService){}
+  constructor( private router: Router, private authService: AuthService){}
 
   ngOnInit(): void {
     localStorage.clear();
   }
 
   loginUser(){
-    this.router.navigate(["/clientes"]);
-    // if(this.credenciales.usuario != '' && this.credenciales.clave  != '')
-    // this.primeraVisita = false;
-    // this.accesoValidacion = true;
-
-    // console.log(this.credenciales);
-
-    
-
-    // this.segUsuarioService.validarUsuarioLogin(this.credenciales).subscribe(
-    //   (data) => {
-    //     if(data){
-    //       this.flujoDatos.setValidacionLogin(this.credenciales.usuario);
-    //       this.router.navigate(["/clientes"]);
-
-
-    //     }else{
-    //       Swal.fire({
-    //         title: 'Error de acceso',
-    //         text: 'No tiene acceso al BackOffice',
-    //         icon: 'error',
-    //         confirmButtonText: 'Aceptar'
-    //       });
-    //       this.accesoValidacion = false;
-    //     }
-
-    //   },
-    //   (error) => {
-    //     console.error('Error al hacer la solicitud:', error);
-    //     this.accesoValidacion = false;
-    //   }
-    // );
+    //this.router.navigate(["/clientes"]);
+    /*this.authService.login(this.userName, this.password).subscribe(
+      (response) => {
+        // Redirigir a la página principal u otra acción tras un login exitoso
+        //this.router.navigate(['/dashboard']);
+        console.log(response);
+      },
+      (error) => {
+        // Manejar errores de autenticación
+        this.errorMessage = 'Usuario o contraseña incorrectos';
+      }
+    );*/
+    this.authService.login(this.userName, this.password).subscribe({
+      next: () => {
+        // Redirigir al usuario o realizar alguna acción adicional
+        console.log('Login exitoso');
+        this.router.navigate(["/depositos"]).then();
+      },
+      error: (err) => {
+        this.errorMessage = err.message;
+      }
+    });
   }
 }

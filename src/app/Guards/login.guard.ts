@@ -1,14 +1,22 @@
-import { Inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
-import { FlujoDatosService } from '../Servicios/flujo-datos.service';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../Servicios/auth.service';
 
-export const loginGuard: CanActivateFn = (route, state) => {
-  const flujoDatos = Inject(FlujoDatosService);
-  const router = Inject(Router);
-  if(localStorage.getItem("user")){
-   return true;
-   }
-  router.navigate(['/']);
-  return false;
+@Injectable({
+  providedIn: 'root'
+})
+export class LoginGuard {
 
-};
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {
+  }
+  canActivate() {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/depositos']).then();
+    }
+    
+  }
+  
+}

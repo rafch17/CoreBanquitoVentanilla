@@ -29,16 +29,14 @@
                         <div class="row align-items-center justify-content-center">
                             <div class="mb-3 col-8" style="text-align: left;">
                                 Ingresa tu usuario
-                                <input type="email" class="form-control" name="usuario" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Usuario"
-                                    style="background-color: #D9D9D9;" [(ngModel)]="credenciales.usuario">
+                                <input  class="form-control" aria-describedby="emailHelp" placeholder="Usuario"style="background-color: #D9D9D9;" 
+                                type="text" id="userName" [(ngModel)]="userName" name="userName" required>
 
                             </div>
                             <div class="mb-3 col-8" style="text-align: left;">
                                 Ingresa tu contraseña
-                                <input type="password" class="form-control" name="clave" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Contrasena"
-                                    style="background-color: #D9D9D9;" [(ngModel)]="credenciales.clave">
+                                <input class="form-control" aria-describedby="emailHelp" placeholder="Contrasena"style="background-color: #D9D9D9;"
+                                type="password" id="password" [(ngModel)]="password" name="password" required>
                                 <div id="pwdlHelp" class="form-text"><a routerLink="#" class="text-warning">Olvide
                                         mi contrasena</a></div>
                             </div>

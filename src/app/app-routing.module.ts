@@ -16,13 +16,14 @@ import { CreditosComponent } from './Pages/creditos/creditos.component';
 import { TablaAmortizacionComponent } from './Pages/tabla-amortizacion/tabla-amortizacion.component';
 import { ConsultaCuentaComponent } from './Pages/cuentas/consulta-cuenta/consulta-cuenta.component';
 import { CrearCuentaComponent } from './Pages/cuentas/crear-cuenta/crear-cuenta.component';
-import { loginGuard } from './Guards/login.guard';
+import { AuthGuard } from './Guards/auth.guard';
 import { BuscarcuentadepComponent } from './Pages/depositos/buscarcuentadep/buscarcuentadep.component';
 import { BuscarcuentaretComponent } from './Pages/retiros/buscarcuentaret/buscarcuentaret.component';
 import { IngresodepositoComponent } from './Pages/depositos/ingresodeposito/ingresodeposito.component';
 import { InfodepositoComponent } from './Pages/depositos/infodeposito/infodeposito.component';
 import { IngresoretiroComponent } from './Pages/retiros/ingresoretiro/ingresoretiro.component';
 import { InforetiroComponent } from './Pages/retiros/inforetiro/inforetiro.component';
+import { LoginGuard } from './Guards/login.guard';
 
 // const routes: Routes = [
 //   { path:'' , component: LoginComponent },
@@ -44,29 +45,29 @@ import { InforetiroComponent } from './Pages/retiros/inforetiro/inforetiro.compo
 // ];
 
 const routes: Routes = [
-  { path:'' , component: LoginComponent },
-  { path:'login' , component: LoginComponent },
-  { path:'usuarios' , component : UsuariosComponent, },
-  { path:'clientes', component: ClientesComponent, },
-  { path: 'clientes/crear', component: CrearComponent,  }, 
-  { path: 'clientes/crear/persona', component: PersonaComponent,  }, 
-  { path: 'clientes/crear/empresa', component: EmpresaComponent,  }, 
-  { path: 'clientes/consultas', component: ConsultaComponent,  }, 
-  { path: 'clientes/editar', component: EditarComponent,  }, 
-  { path: 'clientes/estado', component: EstadoComponent,  },
-  { path:'cuentas', component: CuentasComponent, }, 
-  { path: 'cuentas/consultas', component: ConsultaCuentaComponent,  }, 
-  { path: 'cuentas/crear', component: CrearCuentaComponent,  }, 
-  { path:'creditos', component: CreditosComponent, }, 
-  { path:'creditos/amortizacion', component: TablaAmortizacionComponent}, 
-  { path:'depositos', component: BuscarcuentadepComponent}, 
-  { path:'depositos/ingresodeposito', component: IngresodepositoComponent}, 
-  { path:'depositos/infodeposito', component: InfodepositoComponent}, 
-  { path:'retiros', component: BuscarcuentaretComponent},
-  { path:'retiros/ingresoretiro', component: IngresoretiroComponent}, 
-  { path:'retiros/inforetiro', component: InforetiroComponent}, 
-  { path:'recuados', component: TablaAmortizacionComponent}, 
-  { path: '**', redirectTo: '' }
+  { path:'' , redirectTo:'login',pathMatch: 'full', },
+  { path:'login' , component: LoginComponent, canActivate:[LoginGuard] },
+  //{ path:'usuarios' , component : UsuariosComponent, },
+  //{ path:'clientes', component: ClientesComponent, },
+  //{ path: 'clientes/crear', component: CrearComponent,  }, 
+  //{ path: 'clientes/crear/persona', component: PersonaComponent,  }, 
+  //{ path: 'clientes/crear/empresa', component: EmpresaComponent,  }, 
+  //{ path: 'clientes/consultas', component: ConsultaComponent,  }, 
+  //{ path: 'clientes/editar', component: EditarComponent,  }, 
+  //{ path: 'clientes/estado', component: EstadoComponent,  },
+  //{ path:'cuentas', component: CuentasComponent, }, 
+  //{ path: 'cuentas/consultas', component: ConsultaCuentaComponent,  }, 
+  //{ path: 'cuentas/crear', component: CrearCuentaComponent,  }, 
+  //{ path:'creditos', component: CreditosComponent, canActivate: [AuthGuard]}, 
+  //{ path:'creditos/amortizacion', component: TablaAmortizacionComponent, canActivate: [AuthGuard]}, 
+  { path:'depositos', component: BuscarcuentadepComponent, canActivate: [AuthGuard]}, 
+  { path:'depositos/ingresodeposito', component: IngresodepositoComponent, canActivate: [AuthGuard]}, 
+  { path:'depositos/infodeposito', component: InfodepositoComponent, canActivate: [AuthGuard]}, 
+  { path:'retiros', component: BuscarcuentaretComponent, canActivate: [AuthGuard]},
+  { path:'retiros/ingresoretiro', component: IngresoretiroComponent, canActivate: [AuthGuard]}, 
+  { path:'retiros/inforetiro', component: InforetiroComponent,canActivate: [AuthGuard]}, 
+  { path:'recuados', component: TablaAmortizacionComponent, canActivate: [AuthGuard]}, 
+  { path: '**', redirectTo: 'login',pathMatch: 'full', }
   
 ];
 
