@@ -39,6 +39,10 @@ export class AuthService {
     return localStorage.getItem('user') !== null;
   }
 
+  getUser(){
+    return localStorage.getItem('user');
+  }
+
   /*login(userName: string, password: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = {"userName":userName,"password":password}
