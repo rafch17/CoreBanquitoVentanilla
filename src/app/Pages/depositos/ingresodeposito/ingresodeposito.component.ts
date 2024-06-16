@@ -11,6 +11,7 @@ import { ErrorService } from 'src/app/Servicios/error.service';
 export class IngresodepositoComponent implements OnInit {
   accountData:any;
   clientData:any;
+  value:any;
 
   constructor(private router:Router, private clientService:ClientService, private errorService:ErrorService) { }
 
@@ -20,7 +21,8 @@ export class IngresodepositoComponent implements OnInit {
     this.chargeClientData();
   }
   makeDeposit(){
-    this.router.navigateByUrl("depositos/infodeposito")
+    //this.router.navigateByUrl("depositos/infodeposito")
+    console.log(this.value);
   }
   chargeClientData(){
     this.clientService.searchAcount(this.accountData.clientId).subscribe({

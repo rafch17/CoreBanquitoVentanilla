@@ -42,12 +42,12 @@
                               <b>Monto a depositar: </b> 
                             </div>
                               <div class="col-8">
-                                 <input type="text" class="form-control my-2 rounded-pill" placeholder="Ingrese el monto a depositar"
+                                 <input currencyMask [(ngModel)]="value" [options]="{ prefix: '$', align:'left',thousands: ',', suffix:  '', allowNegative:false, decimal:'.'}" type="text" class="form-control my-2 rounded-pill" placeholder="Ingrese el monto a depositar"
                                       name="numero_identificacion">
                                  
                               </div>
                               <div class="my-2 d-flex align-items-end justify-content-end">
-                                  <button type="button" class="btn btn-warning  rounded-pill" (click)="makeDeposit()">Buscar</button>
+                                  <button type="button" class="btn btn-warning  rounded-pill" (click)="makeDeposit()">Depositar</button>
                               </div>
                           </div>
                           <hr>

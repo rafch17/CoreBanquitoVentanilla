@@ -31,7 +31,7 @@ import { IngresodepositoComponent } from './Pages/depositos/ingresodeposito/ingr
 import { InfodepositoComponent } from './Pages/depositos/infodeposito/infodeposito.component';
 import { IngresoretiroComponent } from './Pages/retiros/ingresoretiro/ingresoretiro.component';
 import { InforetiroComponent } from './Pages/retiros/inforetiro/inforetiro.component';
-
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 
 @NgModule({
@@ -65,7 +65,8 @@ import { InforetiroComponent } from './Pages/retiros/inforetiro/inforetiro.compo
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CurrencyMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]
