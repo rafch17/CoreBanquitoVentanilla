@@ -47,7 +47,7 @@
                                  
                               </div>
                               <div class="my-2 d-flex align-items-end justify-content-end">
-                                  <button type="button" class="btn btn-warning  rounded-pill" (click)="makeDeposit()">Depositar</button>
+                                  <button type="button" class="btn btn-warning  rounded-pill" (click)="makeDeposit()" [disabled]="!value">Depositar</button>
                               </div>
                           </div>
                           <hr>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { AccountService } from 'src/app/Servicios/account.service';
 import { ClientService } from 'src/app/Servicios/client.service';
+import { CriptoService } from 'src/app/Servicios/cripto.service';
 import { ErrorService } from 'src/app/Servicios/error.service';
 
 @Component({
@@ -9,25 +11,59 @@ import { ErrorService } from 'src/app/Servicios/error.service';
   styleUrls: ['./ingresodeposito.component.css']
 })
 export class IngresodepositoComponent implements OnInit {
-  accountData:any;
-  clientData:any;
-  value:any;
+  accountData: any;
+  clientData: any;
+  value: any;
 
-  constructor(private router:Router, private clientService:ClientService, private errorService:ErrorService) { }
+  constructor(private router: Router,private accountService:AccountService, private clientService: ClientService, private errorService: ErrorService, private criptoService:CriptoService) { }
 
   ngOnInit() {
     this.accountData = history.state;
     console.log(this.accountData);
     this.chargeClientData();
   }
-  makeDeposit(){
+  makeDeposit() {
     //this.router.navigateByUrl("depositos/infodeposito")
-    console.log(this.value);
+    
+    const depositoDTO: any = {
+      accountId: this.accountData.id,
+      codeChannel: "0003",
+      uniqueKey: this.criptoService.generateUniqueCode(this.accountData.id,"0003","DEPCNB"),
+      transactionType: "CRE",
+      transactionSubtype: "DEPOSIT",
+      reference: "DEPOSITOCNB",
+      ammount: this.value,
+      creditorAccount: this.accountData.codeUniqueAccount,
+      debitorAccount: "",
+      creationDate: new Date(),
+      applyTax: false,
+      parentTransactionKey: "",
+      state: "POS"
+    }
+    
+    const data :any = {
+      account:this.accountData,
+      transaction: depositoDTO
+    }
+    console.log(data);
+    //this.router.navigateByUrl("depositos/infodeposito",{state: data});
+    this.accountService.sendTransaction(depositoDTO).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.router.navigateByUrl("depositos/infodeposito",{state: data});
+
+      },
+      error: (err) => {
+        this.errorService.notFound("Error", "El deposito no pudo ejecutarse")
+        //this.router.navigateByUrl("depositos");
+      }
+    });
+    
   }
-  chargeClientData(){
+  chargeClientData() {
     this.clientService.searchAcount(this.accountData.clientId).subscribe({
       next: (data) => {
-        this.clientData=data;
+        this.clientData = data;
         console.log(this.clientData);
         //console.log(data)
         //this.account = data;
@@ -36,7 +72,7 @@ export class IngresodepositoComponent implements OnInit {
 
       },
       error: (err) => {
-        this.errorService.notFound("Error","Cuenta no encontrada")
+        this.errorService.notFound("Error", "Cuenta no encontrada")
         this.router.navigateByUrl("depositos");
       }
     })
