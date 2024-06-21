@@ -41,16 +41,17 @@ export class IngresodepositoComponent implements OnInit {
       state: "POS"
     }
     
-    const data :any = {
-      account:this.accountData,
-      transaction: depositoDTO
-    }
-    console.log(data);
+    
+   //console.log(data);
     //this.router.navigateByUrl("depositos/infodeposito",{state: data});
     this.accountService.sendTransaction(depositoDTO).subscribe({
       next: (data) => {
-        console.log(data);
-        this.router.navigateByUrl("depositos/infodeposito",{state: data});
+        const dataTotal :any = {
+          account:this.accountData,
+          transaction: data,
+          client: this.clientData
+        }
+        this.router.navigateByUrl("depositos/infodeposito",{state: dataTotal});
 
       },
       error: (err) => {

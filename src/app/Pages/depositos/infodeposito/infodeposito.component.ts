@@ -7,10 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./infodeposito.component.css']
 })
 export class InfodepositoComponent implements OnInit {
+  transactionData: any;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.transactionData = history.state;
+    console.log(this.transactionData);
+    
   }
   makeNewDeposit(){
     this.router.navigateByUrl("depositos")

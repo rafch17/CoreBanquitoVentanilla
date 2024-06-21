@@ -7,12 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./inforetiro.component.css']
 })
 export class InforetiroComponent implements OnInit {
+  transactionData: any;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.transactionData = history.state;
+    console.log(this.transactionData);
+    
   }
-  makeNewDebit(){
+  makeNewDeposit(){
     this.router.navigateByUrl("retiros")
   }
 
