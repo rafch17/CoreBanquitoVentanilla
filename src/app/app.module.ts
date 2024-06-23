@@ -32,8 +32,14 @@ import { InfodepositoComponent } from './Pages/depositos/infodeposito/infodeposi
 import { IngresoretiroComponent } from './Pages/retiros/ingresoretiro/ingresoretiro.component';
 import { InforetiroComponent } from './Pages/retiros/inforetiro/inforetiro.component';
 import { CurrencyMaskModule } from "ng2-currency-mask";
-
-
+import { SearchRecaudoComponent } from './Pages/recaudos/search-recaudo/search-recaudo.component';
+import { DatosRecaudoComponent } from './Pages/recaudos/datos-recaudo/datos-recaudo.component';
+import { InfoRecaudoComponent } from './Pages/recaudos/info-recaudo/info-recaudo.component';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BuscarEmpresaComponent } from './Pages/recaudos/buscar-empresa/buscar-empresa.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,14 +65,20 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     IngresodepositoComponent,
     InfodepositoComponent,
     IngresoretiroComponent,
-    InforetiroComponent
+    InforetiroComponent,
+    SearchRecaudoComponent,
+    DatosRecaudoComponent,
+    InfoRecaudoComponent,
+    BuscarEmpresaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    AutoCompleteModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

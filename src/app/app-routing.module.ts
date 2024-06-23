@@ -24,6 +24,10 @@ import { InfodepositoComponent } from './Pages/depositos/infodeposito/infodeposi
 import { IngresoretiroComponent } from './Pages/retiros/ingresoretiro/ingresoretiro.component';
 import { InforetiroComponent } from './Pages/retiros/inforetiro/inforetiro.component';
 import { LoginGuard } from './Guards/login.guard';
+import { SearchRecaudoComponent } from './Pages/recaudos/search-recaudo/search-recaudo.component';
+import { DatosRecaudoComponent } from './Pages/recaudos/datos-recaudo/datos-recaudo.component';
+import { InfoRecaudoComponent } from './Pages/recaudos/info-recaudo/info-recaudo.component';
+import { BuscarEmpresaComponent } from './Pages/recaudos/buscar-empresa/buscar-empresa.component';
 
 // const routes: Routes = [
 //   { path:'' , component: LoginComponent },
@@ -66,7 +70,10 @@ const routes: Routes = [
   { path:'retiros', component: BuscarcuentaretComponent, canActivate: [AuthGuard]},
   { path:'retiros/ingresoretiro', component: IngresoretiroComponent, canActivate: [AuthGuard]}, 
   { path:'retiros/inforetiro', component: InforetiroComponent,canActivate: [AuthGuard]}, 
-  { path:'recuados', component: TablaAmortizacionComponent, canActivate: [AuthGuard]}, 
+  { path:'recaudos', component: BuscarEmpresaComponent, canActivate: [AuthGuard]}, 
+  { path:'recaudos/buscarecaudo', component: SearchRecaudoComponent, canActivate: [AuthGuard]}, 
+  { path:'recaudos/datosrecaudo', component: DatosRecaudoComponent, canActivate: [AuthGuard]}, 
+  { path:'recaudos/inforecaudo', component: InfoRecaudoComponent, canActivate: [AuthGuard]}, 
   { path: '**', redirectTo: 'login',pathMatch: 'full', }
   
 ];

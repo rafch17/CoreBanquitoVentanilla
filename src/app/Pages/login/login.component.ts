@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FlujoDatosService } from 'src/app/Servicios/flujo-datos.service';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/Servicios/auth.service';
+import { ErrorService } from 'src/app/Servicios/error.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit{
   primeraVisita = true;
   accesoValidacion = false;
 
-  constructor( private router: Router, private authService: AuthService){}
+  constructor( private router: Router, private authService: AuthService, private errorService:ErrorService){}
 
   ngOnInit(): void {
     localStorage.clear();
@@ -49,7 +50,7 @@ export class LoginComponent implements OnInit{
         this.router.navigate(["/depositos"]).then();
       },
       error: (err) => {
-        this.errorMessage = err.message;
+        this.errorService.notFound("Error", "Credenciales Inválidas")
       }
     });
   }

@@ -28,10 +28,10 @@ export class IngresodepositoComponent implements OnInit {
     const depositoDTO: any = {
       accountId: this.accountData.id,
       codeChannel: "0003",
-      uniqueKey: this.criptoService.generateUniqueCode(this.accountData.id,"0003","DEPCNB"),
+      uniqueKey: this.criptoService.generateUniqueCode(this.accountData.id,"0003","DEPVENTANILLA"),
       transactionType: "CRE",
       transactionSubtype: "DEPOSIT",
-      reference: "DEPOSITOCNB",
+      reference: "DEPOSITOVENTANILLA",
       ammount: this.value,
       creditorAccount: this.accountData.codeUniqueAccount,
       debitorAccount: "",
