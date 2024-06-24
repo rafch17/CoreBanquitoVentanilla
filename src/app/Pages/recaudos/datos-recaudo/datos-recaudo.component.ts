@@ -71,6 +71,8 @@ export class DatosRecaudoComponent implements OnInit {
         this.recaudoService.setOerderItem(this.itemOrder.id,"PAG").subscribe({
           next: (data) => {
             console.log("pagado");
+            this.errorService.exito("Completo","Pago realizado exitosamente");
+            this.router.navigateByUrl("recaudos");
           },
           error: (err) => {
             console.log(err);

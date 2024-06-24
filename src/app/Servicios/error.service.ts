@@ -17,6 +17,14 @@ export class ErrorService {
       text: text,
     });
   }
+  public exito(title:string,text:string) {
+
+    return Swal.fire({
+      icon: "success",
+      title: title,
+      text: text,
+    });
+  }
 
 
 }
