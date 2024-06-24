@@ -30,17 +30,9 @@
               <div class="row">
                 <div class="col-12" style="height: 37vh; overflow-y: auto;">
 
-
-                  <button type="button" class="my-1 col-12 btn btn-primary btn-lg btn-block" routerLink="/recaudos/buscarecaudo">Block level button</button>
-                  <button type="button" class="my-1 col-12 btn btn-primary btn-lg btn-block" routerLink="/recaudos/buscarecaudo">Block level button</button>
-                  <button type="button" class="my-1 col-12 btn btn-primary btn-lg btn-block" routerLink="/recaudos/buscarecaudo">Block level button</button>
-                  <button type="button" class="my-1 col-12 btn btn-primary btn-lg btn-block" routerLink="/recaudos/buscarecaudo">Block level button</button>
-                  <button type="button" class="my-1 col-12 btn btn-primary btn-lg btn-block" routerLink="/recaudos/buscarecaudo">Block level button</button>
-                  <button type="button" class="my-1 col-12 btn btn-primary btn-lg btn-block" routerLink="/recaudos/buscarecaudo">Block level button</button>
-                  <button type="button" class="my-1 col-12 btn btn-primary btn-lg btn-block" routerLink="/recaudos/buscarecaudo">Block level button</button>
-                  <button type="button" class="my-1 col-12 btn btn-primary btn-lg btn-block" routerLink="/recaudos/buscarecaudo">Block level button</button>
-                  <button type="button" class="my-1 col-12 btn btn-primary btn-lg btn-block" routerLink="/recaudos/buscarecaudo">Block level button</button>
-
+                  
+                  <button *ngFor="let company of companiesData" type="button" class="my-1 col-12 btn btn-primary btn-lg btn-block" (click)="selectCompany(company)" >{{company.companyName}}</button>
+                  
                 </div>
                 <div class="col-12">
 

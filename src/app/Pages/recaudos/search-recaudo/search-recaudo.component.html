@@ -33,18 +33,18 @@
                 <div class="col-12">
                   Nombre de la empresa:
                   <input type="text" class="form-control my-2 rounded-pill"
-                    placeholder="Ingrese el Nombre de la empresa" name="empresa" disabled>
+                    placeholder="Ingrese el Nombre de la empresa" name="empresa" value="{{companyData.companyName}}" disabled>
 
                 </div>
                 <div class="col-12">
                   Número de contrapartida:
-                  <input type="number" class="form-control my-2 rounded-pill"
-                    placeholder="Ingrese el Número de contrapartida" name="contrapartida" >
+                  <input type="text" class="form-control my-2 rounded-pill"
+                    placeholder="Ingrese el Número de contrapartida" name="contrapartida"  [(ngModel)]="contrapartida">
 
                 </div>
                 
                 <div class="my-2 d-flex align-items-end justify-content-end">
-                  <button type="button" class="btn btn-warning  rounded-pill" routerLink="/recaudos/datosrecaudo">Buscar</button>
+                  <button type="button" class="btn btn-warning  rounded-pill" (click)="getItem()" [disabled]="!contrapartida">Buscar</button>
                 </div>
               </div>
               <hr>

@@ -29,13 +29,12 @@
             <div class="form-group">
               <div class="row">
                 <div class="col-6">
-                  <div class="col-12  "><b>EMPRESA: </b> transactionData</div>
-                  <div class="col-12  "><b>N. ORDEN: </b> transactionDatay</div>
-                  <div class="col-12  "><b>CLIENTE: </b> transactionData</div>
-                  <div class="col-12  "><b>C.I/RUC: </b> transactionDa</div>
+                  <div class="col-12  "><b>EMPRESA: </b> {{companyData.companyName}}</div>
+                  <div class="col-12  "><b>N. CONTRAPARTIDA: </b>{{contrapartida.counterpart}} </div>
+                  <div class="col-12  "><b>CLIENTE: </b> {{contrapartida.debtorName}}</div>
+                  <div class="col-12  "><b>C.I/RUC: </b> {{contrapartida.identification}}</div>
                   <div class="col-12  "><b>FECHA VENCIMIENTO: </b> transactionDat</div>
-                  <div class="col-12  "><b>FECHA PAGO: </b> transactionData.accoun</div>
-                  <div class="col-12  "><b>VALOR ADEUDADO: </b> transactio</div>
+                  <div class="col-12  "><b>VALOR ADEUDADO: </b> {{contrapartida.owedAmount}}</div>
                   <div class="col-12  "><b>COMISIÓN: </b> transactionData</div>
                   <div class="col-12  "><b>IVA: </b> transactionData</div>
   

@@ -7,7 +7,9 @@ import { Observable, catchError, map, throwError } from 'rxjs';
 })
 export class AuthService {
 
-  private loginUrl = 'http://localhost:8082/login'; // URL del endpoint
+//  private loginUrl = 'http://localhost:8082/login'; // URL del endpoint
+
+  private loginUrl = 'http://corebanquito-bank.us-east-1.elasticbeanstalk.com/login'; // URL del endpoint
 
   constructor(private http: HttpClient) { }
   login(userName: string, password: string): Observable<any> {
@@ -17,8 +19,15 @@ export class AuthService {
     return this.http.put(this.loginUrl, body, { headers }).pipe(
       map(response => {
         // Guardar el token en el localStorage
-        localStorage.setItem('user', JSON.stringify(response));
-        return response;
+        const user:any=response;
+        console.log(response);
+        if (user.codeRole=="ADMIN"||user.codeRole=="VEN") {
+          console.log('entre');
+          localStorage.setItem('user', JSON.stringify(response));
+          return response;
+        }
+        console.log('no entre');
+        return throwError(() => new Error('Login fallido: Usuario no permitido.'));
       }),
       catchError(error => {
         if (error.status === 400) {

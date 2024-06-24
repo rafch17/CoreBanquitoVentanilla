@@ -5,6 +5,7 @@ import { FlujoDatosService } from 'src/app/Servicios/flujo-datos.service';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/Servicios/auth.service';
 import { ErrorService } from 'src/app/Servicios/error.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -44,10 +45,14 @@ export class LoginComponent implements OnInit{
       }
     );*/
     this.authService.login(this.userName, this.password).subscribe({
-      next: () => {
+      next: (response) => {
         // Redirigir al usuario o realizar alguna acción adicional
-        console.log('Login exitoso');
+        console.log(response);
         this.router.navigate(["/depositos"]).then();
+        if (response && typeof response.subscribe === 'function') {
+          this.errorService.notFound("Error", "Credenciales Inválidas")
+          
+        }
       },
       error: (err) => {
         this.errorService.notFound("Error", "Credenciales Inválidas")
