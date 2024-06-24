@@ -17,8 +17,8 @@ export class BuscarEmpresaComponent implements OnInit {
   }
 
   getCompany(){
-    console.log(this.companyName.toString())
-    this.recaudosService.searchCompanyByName(this.companyName.toString()).subscribe({
+    console.log(this.companyName.toString().toUpperCase())
+    this.recaudosService.searchCompanyByName(this.companyName.toString().toUpperCase()).subscribe({
       next: (data) => {
         //console.log(data)
         //this.account = data;

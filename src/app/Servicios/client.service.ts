@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ClientService {
 
-  private searchClientApi = 'http://localhost:8081/client/'; // URL del endpoint
+  private searchClientApi = 'http://corebanquito-client.us-east-1.elasticbeanstalk.com/client/'; // URL del endpoint
   constructor(private http: HttpClient) { }
   searchAcount(clientNumber:string):Observable<any>{
     return this.http.get<any>(this.searchClientApi + clientNumber);
