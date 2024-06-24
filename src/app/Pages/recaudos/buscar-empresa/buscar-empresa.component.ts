@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ErrorService } from 'src/app/Servicios/error.service';
+import { RecaudosService } from 'src/app/Servicios/recaudos.service';
 
 @Component({
   selector: 'app-buscar-empresa',
@@ -6,10 +9,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buscar-empresa.component.css']
 })
 export class BuscarEmpresaComponent implements OnInit {
+  companyName:any;
 
-  constructor() { }
+  constructor(private errorService:ErrorService, private recaudosService:RecaudosService, private router:Router) { }
 
   ngOnInit() {
+  }
+
+  getCompany(){
+    console.log(this.companyName.toString())
+    this.recaudosService.searchCompanyByName(this.companyName.toString()).subscribe({
+      next: (data) => {
+        //console.log(data)
+        //this.account = data;
+        //this.searched = true; // Indica que se ha realizado una búsqueda
+        if(data.length==0){
+          this.errorService.notFound("Error", "Empresa no encontrada");
+
+        }else{
+          this.router.navigateByUrl("recaudos/selectcompany", { state: data });
+        }
+      },
+      error: (err) => {
+        this.errorService.notFound("Error", "Empresa no encontrada");
+      }
+    });
   }
 
 }

@@ -21,7 +21,7 @@ export class BuscarcuentadepComponent implements OnInit {
     this.router.navigateByUrl("depositos/ingresodeposito");
   }
   getAccount(): void {
-    console.log(typeof this.codeUniqueAccount)
+    //console.log(this.codeUniqueAccount.toString())
     this.accountService.searchAcount(this.codeUniqueAccount.toString()).subscribe({
       next: (data) => {
         //console.log(data)

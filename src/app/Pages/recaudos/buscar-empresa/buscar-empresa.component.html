@@ -32,13 +32,13 @@
               <div class="row">
                 <div class="col-12">
                   Nombre de la empresa:
-                  <input type="text" class="form-control my-2 rounded-pill"
-                    placeholder="Ingrese el Nombre de la empresa" name="numero_identificacion">
+                  <input type="text" class="form-control my-2 rounded-pill" [(ngModel)]="companyName"
+                    placeholder="Ingrese el Nombre de la empresa" name="companyName">
 
                 </div>
                 
                 <div class="my-2 d-flex align-items-end justify-content-end">
-                  <button type="button" class="btn btn-warning  rounded-pill" routerLink="/recaudos/buscarecaudo">Buscar</button>
+                <button type="button" class="btn btn-warning  rounded-pill" (click)="getCompany()" [disabled]="!companyName">Buscar</button>
                 </div>
               </div>
               <hr>

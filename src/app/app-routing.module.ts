@@ -28,6 +28,7 @@ import { SearchRecaudoComponent } from './Pages/recaudos/search-recaudo/search-r
 import { DatosRecaudoComponent } from './Pages/recaudos/datos-recaudo/datos-recaudo.component';
 import { InfoRecaudoComponent } from './Pages/recaudos/info-recaudo/info-recaudo.component';
 import { BuscarEmpresaComponent } from './Pages/recaudos/buscar-empresa/buscar-empresa.component';
+import { SelectCompanyComponent } from './Pages/recaudos/select-company/select-company.component';
 
 // const routes: Routes = [
 //   { path:'' , component: LoginComponent },
@@ -74,6 +75,8 @@ const routes: Routes = [
   { path:'recaudos/buscarecaudo', component: SearchRecaudoComponent, canActivate: [AuthGuard]}, 
   { path:'recaudos/datosrecaudo', component: DatosRecaudoComponent, canActivate: [AuthGuard]}, 
   { path:'recaudos/inforecaudo', component: InfoRecaudoComponent, canActivate: [AuthGuard]}, 
+  { path:'recaudos/selectcompany', component: SelectCompanyComponent, canActivate: [AuthGuard]}, 
+
   { path: '**', redirectTo: 'login',pathMatch: 'full', }
   
 ];

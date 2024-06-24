@@ -40,6 +40,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BuscarEmpresaComponent } from './Pages/recaudos/buscar-empresa/buscar-empresa.component';
+import { SelectCompanyComponent } from './Pages/recaudos/select-company/select-company.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +70,8 @@ import { BuscarEmpresaComponent } from './Pages/recaudos/buscar-empresa/buscar-e
     SearchRecaudoComponent,
     DatosRecaudoComponent,
     InfoRecaudoComponent,
-    BuscarEmpresaComponent
+    BuscarEmpresaComponent,
+    SelectCompanyComponent
   ],
   imports: [
     BrowserModule,
