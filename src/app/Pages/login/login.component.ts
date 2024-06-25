@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SegUsuarioService } from 'src/app/Servicios/seg-usuario.service';
+
 import { Router } from '@angular/router';
-import { FlujoDatosService } from 'src/app/Servicios/flujo-datos.service';
-import Swal from 'sweetalert2';
+
 import { AuthService } from 'src/app/Servicios/auth.service';
 import { ErrorService } from 'src/app/Servicios/error.service';
 import { Observable } from 'rxjs';

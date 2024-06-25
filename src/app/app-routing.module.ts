@@ -1,21 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ErrorComponent } from './Pages/error/error.component';
-import { UsuariosComponent } from './Pages/usuarios/usuarios.component';
-import { ClientesComponent } from './Pages/clientes/inicio/clientes.component';
-import { CuentasComponent } from './Pages/cuentas/inicio/cuentas.component';
-import { CrearComponent } from './Pages/clientes/crear/crear.component';
-import { PersonaComponent } from './Pages/clientes/crear/persona/persona.component';
-import { EmpresaComponent } from './Pages/clientes/crear/empresa/empresa.component';
-
-import { ConsultaComponent } from './Pages/clientes/consulta/consulta.component';
-import { EditarComponent } from './Pages/clientes/editar/editar.component';
-import { EstadoComponent } from './Pages/clientes/estado/estado.component';
 import { LoginComponent } from './Pages/login/login.component';
-import { CreditosComponent } from './Pages/creditos/creditos.component';
-import { TablaAmortizacionComponent } from './Pages/tabla-amortizacion/tabla-amortizacion.component';
-import { ConsultaCuentaComponent } from './Pages/cuentas/consulta-cuenta/consulta-cuenta.component';
-import { CrearCuentaComponent } from './Pages/cuentas/crear-cuenta/crear-cuenta.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { BuscarcuentadepComponent } from './Pages/depositos/buscarcuentadep/buscarcuentadep.component';
 import { BuscarcuentaretComponent } from './Pages/retiros/buscarcuentaret/buscarcuentaret.component';

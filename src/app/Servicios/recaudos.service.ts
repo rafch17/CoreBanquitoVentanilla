@@ -7,14 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class RecaudosService {
 
-  private getCompanyApi = 'http://corecobros-receivables.us-east-1.elasticbeanstalk.com/company/search?namePattern='; // URL del endpoint
-  private getItem = 'http://corecobros-receivables.us-east-1.elasticbeanstalk.com/'; // URL del endpoint
-  private getItemId = 'http://corecobros-receivables.us-east-1.elasticbeanstalk.com/order-items/'; // URL del endpoint
-  private transactionApi = "http://localhost:8080/api/account-transactions"
-  private getOrderApi="http://corecobros-receivables.us-east-1.elasticbeanstalk.com/orders/";
-  private getReceivableApi="http://corecobros-receivables.us-east-1.elasticbeanstalk.com/receivables/";
-  private getAccountCompanyApi = 'http://corecobros-receivables.us-east-1.elasticbeanstalk.com/accounts/company/'; // URL del endpoint
-  private sendPaymentApi='http://corecobros-receivables.us-east-1.elasticbeanstalk.com/payment-records'
+  private getCompanyApi = 'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/company/search?namePattern='; // URL del endpoint
+  private getItem = 'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/'; // URL del endpoint
+  private getItemId = 'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/order-items/'; // URL del endpoint
+  private transactionApi = "https://localhost:8080/api/account-transactions"
+  private getOrderApi="https://corecobros-receivables.us-east-1.elasticbeanstalk.com/orders/";
+  private getReceivableApi="https://corecobros-receivables.us-east-1.elasticbeanstalk.com/receivables/";
+  private getAccountCompanyApi = 'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/accounts/company/'; // URL del endpoint
+  private sendPaymentApi='https://corecobros-receivables.us-east-1.elasticbeanstalk.com/payment-records'
 
 
   constructor(private http: HttpClient) { }

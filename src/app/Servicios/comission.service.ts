@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class ComissionService {
 
-  private getReceibavleComissionByReceivableApi = 'http://corecobros-commission.us-east-2.elasticbeanstalk.com/receivablecommissions/receivable/'; // URL del endpoint
+  private getReceibavleComissionByReceivableApi = 'https://corecobros-commission.us-east-2.elasticbeanstalk.com/receivablecommissions/receivable/'; // URL del endpoint
   
-  private getcommisionById = 'http://corecobros-commission.us-east-2.elasticbeanstalk.com/commissions/'; // URL del endpoint
+  private getcommisionById = 'https://corecobros-commission.us-east-2.elasticbeanstalk.com/commissions/'; // URL del endpoint
 
   constructor(private http: HttpClient) { }
 
-  searchReceivableComissionBy(receId: string): Observable<any> {
+  searchReceivableComissionBy(receId:any): Observable<any> {
     return this.http.get<any>(this.getReceibavleComissionByReceivableApi + receId);
   }
   searchComisionesById(id:string){
