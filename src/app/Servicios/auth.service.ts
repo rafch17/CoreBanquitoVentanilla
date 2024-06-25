@@ -9,7 +9,7 @@ export class AuthService {
 
 //  private loginUrl = 'http://localhost:8082/login'; // URL del endpoint
 
-  private loginUrl = 'http://corebanquito-bank.us-east-1.elasticbeanstalk.com/login'; // URL del endpoint
+  private loginUrl = 'https://corebanquito-bank.us-east-1.elasticbeanstalk.com/login'; // URL del endpoint
 
   constructor(private http: HttpClient) { }
   login(userName: string, password: string): Observable<any> {
