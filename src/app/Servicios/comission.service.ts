@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,7 @@ export class ComissionService {
   
   private getcommisionById = 'https://corecobros-commission.us-east-2.elasticbeanstalk.com/commissions/'; // URL del endpoint
 
-  private sendPaymentComissionApi = 'https://corecobros-commission.us-east-2.elasticbeanstalk.com/paycommrecords/'; // URL del endpoint
+  private sendPaymentComissionApi = 'https://corecobros-commission.us-east-2.elasticbeanstalk.com/paycommrecords'; // URL del endpoint
 
 
   constructor(private http: HttpClient) { }
@@ -24,6 +24,7 @@ export class ComissionService {
     
   }
   sendPaymentCommision(paymentnData:any):Observable<any>{
-    return this.http.post<any>(this.sendPaymentComissionApi, paymentnData);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(this.sendPaymentComissionApi, paymentnData, {headers});
   }
 }

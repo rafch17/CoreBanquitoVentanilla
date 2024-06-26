@@ -27,6 +27,7 @@ export class DatosRecaudoComponent implements OnInit {
   iva = 0;
   totalCompleto = 0;
   totalcomisiones = 0;
+  accountCore:any;
 
   constructor(private commisionService: ComissionService, private accountService: AccountService, private criptoService: CriptoService, private clientService: ClientService, private router: Router, private recaudoService: RecaudosService, private errorService: ErrorService) {
 
@@ -92,14 +93,14 @@ export class DatosRecaudoComponent implements OnInit {
     //this.router.navigateByUrl("recaudos/inforecaudo")
 
     const transactionDTO: any = {
-      accountId: this.accountData.id,
+      accountId: this.accountCore.id,
       codeChannel: "0003",
       uniqueKey: this.criptoService.generateUniqueCode(this.accountData.id, "0003", "RECVENTANILLA"),
       transactionType: "CRE",
       transactionSubtype: "PAYMENT",
       reference: "RECAUDOVENTANILLA",
       ammount: this.contrapartida.owedAmount,
-      creditorAccount: this.accountData.owedAmount,
+      creditorAccount: this.accountCore.id,
       debitorAccount: "",
       creationDate: new Date(),
       applyTax: false,
@@ -109,11 +110,12 @@ export class DatosRecaudoComponent implements OnInit {
     const paymentRecordDTO: any = {
       orderItemId: this.itemOrder.id,
       paymentType: "EFE",
-      owedPayment: this.itemOrder.owedPayment,
+      owedPayment: this.itemOrder.owedAmount,
       paymentDate: new Date(),
       outstandingBalance: 0.00,
       channel: "VEN"
     }
+    
 
 
 
@@ -136,15 +138,19 @@ export class DatosRecaudoComponent implements OnInit {
               next: (data) => {
 
                 //this.dataFinal={...this.dataFinal, paymentRecord:data};
+                console.log(this.dataFinal);
+                console.log(this.receivableCom[0].commissionId);
                 const paymentComisionDTO: any = {
-                  commissionId: this.receivableCom[0].commissionId,
-                  paymentRecordId: this.dataFinal.paymentRecord.id,
+                  commissionId: 11,
+                  paymentRecordId: 29,
                   note: "Sample note"
                 }
+                console.log(paymentComisionDTO)
                 this.commisionService.sendPaymentCommision(paymentComisionDTO).subscribe({
                   next: (data) => {
                     this.dataFinal={...this.dataFinal,paycom:data}
                     console.log(this.dataFinal);
+                    this.errorService.exito("Completo", "Pago realizado exitosamente");
                     this.router.navigateByUrl("recaudos/inforecaudo", { state: this.dataFinal});
                     //todo:
                   },
@@ -203,7 +209,14 @@ export class DatosRecaudoComponent implements OnInit {
     this.recaudoService.getAccountByCompanyId(this.receivable.companyId).subscribe((data) => {
       this.accountData = data;
       console.log(this.accountData);
+      this.recaudoService.getAccountById(this.receivable.accountId).subscribe((data)=>{
+        console.log(data);
+        this.accountService.searchAcount(data.accountNumber).subscribe((data)=>{
+          this.accountCore=data;
+          console.log(this.accountCore);
+        })
 
+      })
 
     });
   }

@@ -14,6 +14,8 @@ export class RecaudosService {
   private getOrderApi="https://corecobros-receivables.us-east-1.elasticbeanstalk.com/orders/";
   private getReceivableApi="https://corecobros-receivables.us-east-1.elasticbeanstalk.com/receivables/";
   private getAccountCompanyApi = 'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/accounts/company/'; // URL del endpoint
+  private getAccountCompanyIDApi = 'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/accounts/'; // URL del endpoint
+ 
   private sendPaymentApi='https://corecobros-receivables.us-east-1.elasticbeanstalk.com/payment-records'
 
 
@@ -23,7 +25,7 @@ export class RecaudosService {
     return this.http.get<any>(this.getCompanyApi + companyName);
   }
   getItemOrder(companyId:string,contrapartida:string): Observable<any> {
-    return this.http.get<any>(this.getItem+'order-items/search?counterpart='+contrapartida+'&companyId='+companyId);
+    return this.http.get<any>(this.getItem+'order-items/search/by-counterpart?counterpart='+contrapartida+'&companyId='+companyId);
   }
   getOrderById(order:string): Observable<any> {
     return this.http.get<any>(this.getOrderApi+order);
@@ -36,6 +38,9 @@ export class RecaudosService {
   }
   getAccountByCompanyId(companyId:string): Observable<any> {
     return this.http.get<any>(this.getAccountCompanyApi+companyId);
+  }
+  getAccountById(accountId:string): Observable<any> {
+    return this.http.get<any>(this.getAccountCompanyIDApi+accountId);
   }
   sendPayment(paymentnData:any):Observable<any>{
     return this.http.post<any>(this.sendPaymentApi, paymentnData);
