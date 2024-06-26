@@ -43,8 +43,15 @@ export class SearchRecaudoComponent implements OnInit {
             company:this.companyData,
             itemData: data,
           }
-          console.log(dataTotal)
-          this.router.navigateByUrl("recaudos/datosrecaudo", { state: dataTotal });
+          console.log(dataTotal.itemData[0].status);
+          if (dataTotal.itemData[0].status==="PEN") {
+            console.log(dataTotal)
+            this.router.navigateByUrl("recaudos/datosrecaudo", { state: dataTotal });
+  
+          }else{
+            this.errorService.notFound("Error", "El registro está pagado");
+
+          }
         }
         
         //this.account = data;
