@@ -148,7 +148,7 @@ export class DatosRecaudoComponent implements OnInit {
                 console.log(paymentComisionDTO)
                 this.commisionService.sendPaymentCommision(paymentComisionDTO).subscribe({
                   next: (data) => {
-                    this.dataFinal={...this.dataFinal,paycom:data}
+                    this.dataFinal={...this.dataFinal,paycom:data,contrapartida:this.contrapartida}
                     console.log(this.dataFinal);
                     this.errorService.exito("Completo", "Pago realizado exitosamente");
                     this.router.navigateByUrl("recaudos/inforecaudo", { state: this.dataFinal});

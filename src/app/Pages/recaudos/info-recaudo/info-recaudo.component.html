@@ -20,41 +20,45 @@
       <div class="p-4 flex-grow-1 rounded" style="background-color: rgba(255, 255, 255, 0.67);">
 
         <h1 class="ms-5 mt-2" style="color: #0000006e; font-size: 24px; font-weight: bold; padding-left:100px;">
-          Depósitos > Depósitos en ventanilla</h1>
+          Recaudos > Recaudos en ventanilla</h1>
 
         <div class="row contenido my-3 p-5 rounded-4">
-          <h5>Información del Depósito</h5>
+          <h5>Recaudo exitoso</h5>
           <hr>
           <form action="">
             <div class="form-group">
               <div class="row">
                 <div class="col-6">
-                  <div class="col-12  "><b>CLIENTE: </b> transactionData</div>
-                  <div class="col-12  "><b>CI/RUC: </b> transactionDatay</div>
-                  <div class="col-12  "><b>CONTRAPARTIDA: </b> transactionData</div>
-                  <div class="col-12  "><b>EMPRESA: </b> transactionDa</div>
-                  <div class="col-12  "><b>FECHA VENCIMIENTO: </b> transactionDat</div>
-                  <div class="col-12  "><b>FECHA PAGO: </b> transactionData.accoun</div>
                   
+                  <div class="col-12  "><b>N.CONTRAPARTIDA: </b> {{this.data.contrapartida.counterpart}}</div>
+                  <div class="col-12  "><b>FECHA PAGO: </b> {{this.data.paymentRecord.paymentDate}}</div>
+                  <div class="col-12  "><b>EMPRESA: </b> {{this.data.contrapartida.companyName}}</div>
+                  <div class="col-12  "><b>C.I/RUC: </b> {{this.data.contrapartida.identification}}</div>
+                  <div class="col-12  "><b>Cliente: </b> {{this.data.contrapartida.debtorName}}</div>
+                  
+
+
+
                 </div>
-                <div class="col-6 mt-5">
-                  <div class="col-12  d-flex align-items-center justify-content-center "><b>Monto total a recaudar: </b></div>
-                  <div class="col-12  d-flex align-items-center justify-content-center "> $xx.xx</div>
-                  <div class="col-12  "><b>TOTAL PAGADO: </b> $00.00</div>
-                  <div class="col-12  mx-5"><b>MONTO: </b> $00.00</div>
-                  <div class="col-12  mx-5"><b>COMISIÓN: </b> $00.00</div>
-                  <div class="col-12  mx-5"><b>IVA: </b> $00.00</div>
-  
+                <div class="col-6 mt-2">
+                  
+                  
+                  <div class="col-12  "><b>TOTAL PAGADO: </b> ${{this.data.transaction.ammount+this.data.transaction.ammount+comission.debtorValue*0.12}}</div>
+                  <div class="col-12  mx-5"><b>MONTO: </b> ${{this.data.transaction.ammount}}</div>
+                  <div class="col-12  mx-5"><b>COMISIÓN: </b> ${{this.data.transaction.ammount}}</div>
+                  <div class="col-12  mx-5"><b>IVA: </b> ${{comission.debtorValue*0.12}}</div>
+
 
 
                   <div class="my-2 d-flex align-items-center justify-content-center">
-                    <button type="button" class="btn btn-warning  rounded-pill" routerLink="/recaudos/">Nuevo Recaudo</button>
+                    <button type="button" class="btn btn-warning  rounded-pill" routerLink="/recaudos/">Nuevo
+                      Recaudo</button>
                   </div>
                 </div>
               </div>
 
-              
-              
+
+
 
             </div>
           </form>
