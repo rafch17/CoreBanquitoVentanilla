@@ -11,6 +11,9 @@ export class ComissionService {
   
   private getcommisionById = 'https://corecobros-commission.us-east-2.elasticbeanstalk.com/commissions/'; // URL del endpoint
 
+  private sendPaymentComissionApi = 'https://corecobros-commission.us-east-2.elasticbeanstalk.com/paycommrecords/'; // URL del endpoint
+
+
   constructor(private http: HttpClient) { }
 
   searchReceivableComissionBy(receId:any): Observable<any> {
@@ -20,5 +23,7 @@ export class ComissionService {
     return this.http.get<any>(this.getcommisionById + id);
     
   }
-
+  sendPaymentCommision(paymentnData:any):Observable<any>{
+    return this.http.post<any>(this.sendPaymentComissionApi, paymentnData);
+  }
 }

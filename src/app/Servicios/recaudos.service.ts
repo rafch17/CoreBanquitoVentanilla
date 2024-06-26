@@ -41,7 +41,7 @@ export class RecaudosService {
     return this.http.post<any>(this.sendPaymentApi, paymentnData);
   }
   setOerderItem(id:string, estado:string):Observable<any>{
-    return this.http.put<any>("http://corecobros-receivables.us-east-1.elasticbeanstalk.com/order-items/"+id+"/status?status="+estado,null)
+    return this.http.put<any>("https://corecobros-receivables.us-east-1.elasticbeanstalk.com/order-items/"+id+"/status?status="+estado,null)
   }
 
   /*sendItemOrder(companyId:string,contrapartida:string): Observable<any> {

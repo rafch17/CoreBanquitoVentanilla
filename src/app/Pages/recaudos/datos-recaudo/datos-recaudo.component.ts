@@ -21,6 +21,7 @@ export class DatosRecaudoComponent implements OnInit {
   order: any;
   receivable: any;
   receivableCom: any;
+  dataFinal: any;
   comisiones: any[] = [];
   sumaComisiones = 0;
   iva = 0;
@@ -40,7 +41,7 @@ export class DatosRecaudoComponent implements OnInit {
 
   }
   procesarPago() {
-    const pago:any = {
+    const pago: any = {
       orderItemId: this.itemOrder.id,
       paymentType: "EFE",
       owedPayment: this.itemOrder.owedAmount,
@@ -48,7 +49,7 @@ export class DatosRecaudoComponent implements OnInit {
       outstandingBalance: 0.00,
       channel: "VEN"
     }
-    let dataTotal:any = {
+    let dataTotal: any = {
       companyData: this.companyData,
       contrapartida: this.contrapartida,
       accountData: this.accountData,
@@ -58,26 +59,26 @@ export class DatosRecaudoComponent implements OnInit {
       receivable: this.receivable,
       receivableCom: this.receivableCom,
       comisiones: this.comisiones,
-      sumaComisiones:this.sumaComisiones,
-      iva:this.iva,
-      totalCompleto:this.totalCompleto,
-      totalcomisiones:this.totalcomisiones,
+      sumaComisiones: this.sumaComisiones,
+      iva: this.iva,
+      totalCompleto: this.totalCompleto,
+      totalcomisiones: this.totalcomisiones,
     }
     console.log(pago);
     this.recaudoService.sendPayment(pago).subscribe({
       next: (data) => {
-        dataTotal={...dataTotal,pago:data}
+        dataTotal = { ...dataTotal, pago: data }
         //this.router.navigateByUrl("recaudos/inforecaudo", { state: dataTotal });
-        this.recaudoService.setOerderItem(this.itemOrder.id,"PAG").subscribe({
+        this.recaudoService.setOerderItem(this.itemOrder.id, "PAG").subscribe({
           next: (data) => {
             console.log("pagado");
-            this.errorService.exito("Completo","Pago realizado exitosamente");
+            this.errorService.exito("Completo", "Pago realizado exitosamente");
             this.router.navigateByUrl("recaudos");
           },
           error: (err) => {
             console.log(err);
             this.errorService.notFound("Error", "El recaudo no pudo ejecutarse")
-            
+
           }
         })
       },
@@ -90,7 +91,7 @@ export class DatosRecaudoComponent implements OnInit {
   makeDeposit() {
     //this.router.navigateByUrl("recaudos/inforecaudo")
 
-    const recaudoDTO: any = {
+    const transactionDTO: any = {
       accountId: this.accountData.id,
       codeChannel: "0003",
       uniqueKey: this.criptoService.generateUniqueCode(this.accountData.id, "0003", "RECVENTANILLA"),
@@ -105,22 +106,69 @@ export class DatosRecaudoComponent implements OnInit {
       parentTransactionKey: "",
       state: "POS"
     }
+    const paymentRecordDTO: any = {
+      orderItemId: this.itemOrder.id,
+      paymentType: "EFE",
+      owedPayment: this.itemOrder.owedPayment,
+      paymentDate: new Date(),
+      outstandingBalance: 0.00,
+      channel: "VEN"
+    }
+
+
 
 
     //console.log(data);
     //this.router.navigateByUrl("recaudos/inforecaudo",{state: data});
-    this.accountService.sendTransaction(recaudoDTO).subscribe({
+    this.accountService.sendTransaction(transactionDTO).subscribe({
       next: (data) => {
         const dataTotal: any = {
           account: this.accountData,
           transaction: data,
           client: this.clientData
         }
-        this.router.navigateByUrl("recaudos/inforecaudo", { state: dataTotal });
+        this.dataFinal = { ...dataTotal }
+        this.recaudoService.sendPayment(paymentRecordDTO).subscribe({
+          next: (data) => {
+
+            this.dataFinal = { ...this.dataFinal, paymentRecord: data };
+            this.recaudoService.setOerderItem(this.itemOrder.id, "PAG").subscribe({
+              next: (data) => {
+
+                //this.dataFinal={...this.dataFinal, paymentRecord:data};
+                const paymentComisionDTO: any = {
+                  commissionId: this.receivableCom[0].commissionId,
+                  paymentRecordId: this.dataFinal.paymentRecord.id,
+                  note: "Sample note"
+                }
+                this.commisionService.sendPaymentCommision(paymentComisionDTO).subscribe({
+                  next: (data) => {
+                    this.dataFinal={...this.dataFinal,paycom:data}
+                    console.log(this.dataFinal);
+                    this.router.navigateByUrl("recaudos/inforecaudo", { state: this.dataFinal});
+                    //todo:
+                  },
+                  error: (err) => {
+                    this.errorService.notFound("Error", "La comision no pudo enviarse")
+                  }
+                })
+              },
+              error: (err) => {
+                this.errorService.notFound("Error", "El status del recaudo no pudo cambiarse")
+              }
+            });
+
+          },
+          error: (err) => {
+            this.errorService.notFound("Error", "El pago del recaudo no pudo ejecutarse")
+
+          }
+        });
+        
 
       },
       error: (err) => {
-        this.errorService.notFound("Error", "El recaudo no pudo ejecutarse")
+        this.errorService.notFound("Error", "La transaccion del recaudo no pudo ejecutarse")
         //this.router.navigateByUrl("recaudos");
       }
     });
