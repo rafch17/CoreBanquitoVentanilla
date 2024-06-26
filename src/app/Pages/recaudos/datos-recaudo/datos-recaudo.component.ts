@@ -5,6 +5,7 @@ import { ClientService } from 'src/app/Servicios/client.service';
 import { ComissionService } from 'src/app/Servicios/comission.service';
 import { CriptoService } from 'src/app/Servicios/cripto.service';
 import { ErrorService } from 'src/app/Servicios/error.service';
+import { InvoiceService } from 'src/app/Servicios/invoice.service';
 import { RecaudosService } from 'src/app/Servicios/recaudos.service';
 
 @Component({
@@ -27,9 +28,9 @@ export class DatosRecaudoComponent implements OnInit {
   iva = 0;
   totalCompleto = 0;
   totalcomisiones = 0;
-  accountCore:any;
+  accountCore: any;
 
-  constructor(private commisionService: ComissionService, private accountService: AccountService, private criptoService: CriptoService, private clientService: ClientService, private router: Router, private recaudoService: RecaudosService, private errorService: ErrorService) {
+  constructor(private invoiceService: InvoiceService, private commisionService: ComissionService, private accountService: AccountService, private criptoService: CriptoService, private clientService: ClientService, private router: Router, private recaudoService: RecaudosService, private errorService: ErrorService) {
 
   }
 
@@ -115,7 +116,7 @@ export class DatosRecaudoComponent implements OnInit {
       outstandingBalance: 0.00,
       channel: "VEN"
     }
-    
+
 
 
 
@@ -148,10 +149,55 @@ export class DatosRecaudoComponent implements OnInit {
                 console.log(paymentComisionDTO)
                 this.commisionService.sendPaymentCommision(paymentComisionDTO).subscribe({
                   next: (data) => {
-                    this.dataFinal={...this.dataFinal,paycom:data,contrapartida:this.contrapartida}
-                    console.log(this.dataFinal);
-                    this.errorService.exito("Completo", "Pago realizado exitosamente");
-                    this.router.navigateByUrl("recaudos/inforecaudo", { state: this.dataFinal});
+                    this.dataFinal = { ...this.dataFinal, paycom: data, contrapartida: this.contrapartida }
+                    const invoice = {
+                      payComId: this.dataFinal.paycom.id,
+                      recipientId: 13,
+                      sequential: "INV0000000014004",
+                      authorizationNumber: "AUTORIZACION00000004",
+                      date: new Date(),
+                      subtotal: this.sumaComisiones,
+                      total: this.totalcomisiones
+                    }
+                    console.log(invoice);
+                    this.invoiceService.sendInvoice(invoice).subscribe({
+                      next: (data) => {
+                        
+
+                        console.log(this.dataFinal);
+                        const tax = {
+
+                          invoice: {
+                            id: data.id
+                          },
+                          name: "IVA",
+                          percentage: 0.15
+
+                        };
+                        this.invoiceService.sendTax(tax).subscribe({
+                          next: (data) => {
+                            this.dataFinal = { ...this.dataFinal, invoice: data };
+                            console.log(this.dataFinal);
+                            this.errorService.exito("Completo", "Pago realizado exitosamente");
+                            this.router.navigateByUrl("recaudos/inforecaudo", { state: this.dataFinal });
+                            //todo:
+                          },
+                          error: (err) => {
+                            this.errorService.notFound("Error", "El impuesto no pudo Facturarse")
+                          }
+                        })
+                        
+                        //todo:
+                      },
+                      error: (err) => {
+                        this.errorService.notFound("Error", "La comisión no pudo Facturarse")
+                      }
+                    })
+
+                    //console.log(this.dataFinal);
+
+                    //this.errorService.exito("Completo", "Pago realizado exitosamente");
+                    //this.router.navigateByUrl("recaudos/inforecaudo", { state: this.dataFinal });
                     //todo:
                   },
                   error: (err) => {
@@ -170,7 +216,7 @@ export class DatosRecaudoComponent implements OnInit {
 
           }
         });
-        
+
 
       },
       error: (err) => {
@@ -209,10 +255,10 @@ export class DatosRecaudoComponent implements OnInit {
     this.recaudoService.getAccountByCompanyId(this.receivable.companyId).subscribe((data) => {
       this.accountData = data;
       console.log(this.accountData);
-      this.recaudoService.getAccountById(this.receivable.accountId).subscribe((data)=>{
+      this.recaudoService.getAccountById(this.receivable.accountId).subscribe((data) => {
         console.log(data);
-        this.accountService.searchAcount(data.accountNumber).subscribe((data)=>{
-          this.accountCore=data;
+        this.accountService.searchAcount(data.accountNumber).subscribe((data) => {
+          this.accountCore = data;
           console.log(this.accountCore);
         })
 
@@ -230,7 +276,7 @@ export class DatosRecaudoComponent implements OnInit {
           this.comisiones = resultados;
           this.sumaComisiones = this.calcularSumaDebtorValue(resultados);
           console.log(this.sumaComisiones);
-          this.iva = this.sumaComisiones * 0.12;
+          this.iva = this.sumaComisiones * 0.15;
           console.log(this.iva);
           this.totalcomisiones = this.sumaComisiones + this.iva;
           console.log(this.totalcomisiones);
