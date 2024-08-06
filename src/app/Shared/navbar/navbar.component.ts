@@ -28,6 +28,6 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     
     console.log('Logout exitoso');
-    this.router.navigate([""]);
+    this.router.navigate(["login"]);
   }
 }

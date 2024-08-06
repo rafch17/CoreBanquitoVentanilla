@@ -7,14 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class RecaudosService {
 
-  private getCompanyApi = 'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/company/search?namePattern='; // URL del endpoint
-  private getItem = 'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/'; // URL del endpoint
-  private getItemId = 'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/order-items/'; // URL del endpoint
-  private transactionApi = "https://localhost:8080/api/account-transactions"
-  private getOrderApi="https://corecobros-receivables.us-east-1.elasticbeanstalk.com/orders/";
-  private getReceivableApi="https://corecobros-receivables.us-east-1.elasticbeanstalk.com/receivables/";
-  private getAccountCompanyApi = 'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/accounts/company/'; // URL del endpoint
-  private getAccountCompanyIDApi = 'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/accounts/'; // URL del endpoint
+  private firstUrl = 'http://localhost:8081/company-microservice/api/v1';
+  private getCompanyApi = this.firstUrl+'/companies/name/'; // URL del endpoint
+  private getItem = this.firstUrl+'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/'; // URL del endpoint
+  private getItemId = this.firstUrl+'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/order-items/'; // URL del endpoint
+  private transactionApi = this.firstUrl+"https://localhost:8080/api/account-transactions"
+  private getOrderApi=this.firstUrl+"https://corecobros-receivables.us-east-1.elasticbeanstalk.com/orders/";
+  private getReceivableApi=this.firstUrl+"https://corecobros-receivables.us-east-1.elasticbeanstalk.com/receivables/";
+  private getAccountCompanyApi = this.firstUrl+'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/accounts/company/'; // URL del endpoint
+  private getAccountCompanyIDApi = this.firstUrl+'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/accounts/'; // URL del endpoint
  
   private sendPaymentApi='https://corecobros-receivables.us-east-1.elasticbeanstalk.com/payment-records'
 

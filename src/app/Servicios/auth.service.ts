@@ -9,19 +9,19 @@ export class AuthService {
 
 //  private loginUrl = 'http://localhost:8082/login'; // URL del endpoint
 
-  private loginUrl = 'https://corebanquito-bank.us-east-1.elasticbeanstalk.com/login'; // URL del endpoint
+  private loginUrl = 'https://m4b60phktl.execute-api.us-east-1.amazonaws.com/banquito/api/v1/auth/login'; // URL del endpoint
 
   constructor(private http: HttpClient) { }
   login(userName: string, password: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = { userName, password };
 
-    return this.http.put(this.loginUrl, body, { headers }).pipe(
+    return this.http.post(this.loginUrl, body, { headers }).pipe(
       map(response => {
         // Guardar el token en el localStorage
         const user:any=response;
         console.log(response);
-        if (user.codeRole=="ADMIN"||user.codeRole=="VEN") {
+        if (user.typeUser=="ADMIN"||user.typeUser=="VEN") {
           console.log('entre');
           localStorage.setItem('user', JSON.stringify(response));
           return response;
@@ -45,6 +45,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
+    //return true;
     return localStorage.getItem('user') !== null;
   }
 
