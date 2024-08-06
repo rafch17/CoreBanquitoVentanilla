@@ -16,7 +16,7 @@ export class IngresoretiroComponent implements OnInit {
   clientData: any;
   value: any;
 
-  constructor(private router: Router,private accountService:AccountService, private clientService: ClientService, private errorService: ErrorService, private criptoService:CriptoService) { }
+  constructor(private router: Router, private accountService: AccountService, private clientService: ClientService, private errorService: ErrorService, private criptoService: CriptoService) { }
 
   ngOnInit() {
     this.accountData = history.state;
@@ -25,34 +25,32 @@ export class IngresoretiroComponent implements OnInit {
   }
   makeDeposit() {
     //this.router.navigateByUrl("depositos/infodeposito")
-    
+
     const depositoDTO: any = {
-      accountId: this.accountData.id,
-      codeChannel: "0003",
-      uniqueKey: this.criptoService.generateUniqueCode(this.accountData.id,"0003","DEPVENTANILLA"),
+      
+      accountId: 777,
+      codeChannel: "CHA007363",
       transactionType: "DEB",
-      transactionSubtype: "WITHDRAWAL",
       reference: "RETIROVENTANILLA",
-      ammount: this.value,
-      creditorAccount: "",
-      debitorAccount: this.accountData.codeUniqueAccount,
-      creationDate: new Date(),
-      applyTax: false,
-      parentTransactionKey: "",
-      state: "POS"
+      amount: this.value,
+      creditorAccount: "2266977777",
+      debitorAccount: this.accountData.codeInternalAccount,
+      status: "PEN",
+      comission: 0.00
+
     }
-    
-    
-   //console.log(data);
+
+
+    //console.log(data);
     //this.router.navigateByUrl("depositos/infodeposito",{state: data});
     this.accountService.sendTransaction(depositoDTO).subscribe({
       next: (data) => {
-        const dataTotal :any = {
-          account:this.accountData,
+        const dataTotal: any = {
+          account: this.accountData,
           transaction: data,
           client: this.clientData
         }
-        this.router.navigateByUrl("retiros/inforetiro",{state: dataTotal});
+        this.router.navigateByUrl("retiros/inforetiro", { state: dataTotal });
 
       },
       error: (err) => {
@@ -60,7 +58,7 @@ export class IngresoretiroComponent implements OnInit {
         //this.router.navigateByUrl("depositos");
       }
     });
-    
+
   }
   chargeClientData() {
     this.clientService.searchAcount(this.accountData.clientId).subscribe({
