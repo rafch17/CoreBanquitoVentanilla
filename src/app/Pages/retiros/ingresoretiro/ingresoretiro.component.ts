@@ -29,7 +29,7 @@ export class IngresoretiroComponent implements OnInit {
     const depositoDTO: any = {
       
       accountId: 777,
-      codeChannel: "CHA007363",
+      codeChannel: "CHA0078084",
       transactionType: "DEB",
       reference: "RETIROVENTANILLA",
       amount: this.value,

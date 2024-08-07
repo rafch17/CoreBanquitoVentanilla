@@ -30,11 +30,11 @@
               <div class="container">
                 <div class="row justify-content-center">
                   <div class="col-12 text-center "><b>Transacción Exitosa</b></div>
-                  <div class="col-12 text-center "><b>COD. TRANSACCIÓN: </b> {{transactionData.transaction.uniqueKey}}</div>
+                  
                   <div class="col-12 text-center "><b>N. CUENTA: </b> {{transactionData.account.codeInternalAccount}}</div>
-                  <div class="col-12 text-center "><b>MONTO: </b>$ {{transactionData.transaction.ammount}}</div>
-                  <div class="col-12 text-center "><b>FECHA: </b> {{transactionData.transaction.creationDate}}</div>
-                  <div class="col-12 text-center "><b>BENEFICIARIO: </b> {{transactionData.client.fullName}}</div>
+                  <div class="col-12 text-center "><b>MONTO: </b> {{transactionData.transaction.amount}} USD</div>
+                  <div class="col-12 text-center "><b>FECHA: </b> {{transactionData.transaction.createDate}}</div>
+                  <div class="col-12 text-center "><b>Propietario: </b> {{transactionData.client.fullName}}</div>
                   
                 </div>
                 <div class="my-2 d-flex  justify-content-center">

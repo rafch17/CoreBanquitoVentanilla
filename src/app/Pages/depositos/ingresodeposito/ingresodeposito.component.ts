@@ -25,20 +25,19 @@ export class IngresodepositoComponent implements OnInit {
   makeDeposit() {
     //this.router.navigateByUrl("depositos/infodeposito")
     
+    
     const depositoDTO: any = {
-      accountId: this.accountData.id,
-      codeChannel: "0003",
-      uniqueKey: this.criptoService.generateUniqueCode(this.accountData.id,"0003","DEPVENTANILLA"),
+      
+      accountId: 777,
+      codeChannel: "CHA0078084",
       transactionType: "CRE",
-      transactionSubtype: "DEPOSIT",
-      reference: "DEPOSITOVENTANILLA",
-      ammount: this.value,
-      creditorAccount: this.accountData.codeUniqueAccount,
-      debitorAccount: "",
-      creationDate: new Date(),
-      applyTax: false,
-      parentTransactionKey: "",
-      state: "POS"
+      reference: "RDEPOSITOVENTANILLA",
+      amount: this.value,
+      creditorAccount: this.accountData.codeInternalAccount,
+      debitorAccount: "2266977777",
+      status: "PEN",
+      comission: 0.00
+
     }
     
     
