@@ -34,22 +34,9 @@ import { SelectCompanyComponent } from './Pages/recaudos/select-company/select-c
 //   { path: '**', redirectTo: '' }
 // ];
 
-const routes: Routes = [
+/*const routes: Routes = [
   { path:'' , redirectTo:'login',pathMatch: 'full', },
   { path:'login' , component: LoginComponent, canActivate:[LoginGuard] },
-  //{ path:'usuarios' , component : UsuariosComponent, },
-  //{ path:'clientes', component: ClientesComponent, },
-  //{ path: 'clientes/crear', component: CrearComponent,  }, 
-  //{ path: 'clientes/crear/persona', component: PersonaComponent,  }, 
-  //{ path: 'clientes/crear/empresa', component: EmpresaComponent,  }, 
-  //{ path: 'clientes/consultas', component: ConsultaComponent,  }, 
-  //{ path: 'clientes/editar', component: EditarComponent,  }, 
-  //{ path: 'clientes/estado', component: EstadoComponent,  },
-  //{ path:'cuentas', component: CuentasComponent, }, 
-  //{ path: 'cuentas/consultas', component: ConsultaCuentaComponent,  }, 
-  //{ path: 'cuentas/crear', component: CrearCuentaComponent,  }, 
-  //{ path:'creditos', component: CreditosComponent, canActivate: [AuthGuard]}, 
-  //{ path:'creditos/amortizacion', component: TablaAmortizacionComponent, canActivate: [AuthGuard]}, 
   { path:'depositos', component: BuscarcuentadepComponent, canActivate: [AuthGuard]}, 
   { path:'depositos/ingresodeposito', component: IngresodepositoComponent, canActivate: [AuthGuard]}, 
   { path:'depositos/infodeposito', component: InfodepositoComponent, canActivate: [AuthGuard]}, 
@@ -61,6 +48,24 @@ const routes: Routes = [
   { path:'recaudos/datosrecaudo', component: DatosRecaudoComponent, canActivate: [AuthGuard]}, 
   { path:'recaudos/inforecaudo', component: InfoRecaudoComponent, canActivate: [AuthGuard]}, 
   { path:'recaudos/selectcompany', component: SelectCompanyComponent, canActivate: [AuthGuard]}, 
+
+  { path: '**', redirectTo: 'login',pathMatch: 'full', }
+  
+];*/
+const routes: Routes = [
+  { path:'' , redirectTo:'login',pathMatch: 'full', },
+  { path:'login' , component: LoginComponent,  },
+  { path:'depositos', component: BuscarcuentadepComponent, }, 
+  { path:'depositos/ingresodeposito', component: IngresodepositoComponent, }, 
+  { path:'depositos/infodeposito', component: InfodepositoComponent, }, 
+  { path:'retiros', component: BuscarcuentaretComponent, },
+  { path:'retiros/ingresoretiro', component: IngresoretiroComponent, }, 
+  { path:'retiros/inforetiro', component: InforetiroComponent,}, 
+  { path:'recaudos', component: BuscarEmpresaComponent, }, 
+  { path:'recaudos/buscarecaudo', component: SearchRecaudoComponent, }, 
+  { path:'recaudos/datosrecaudo', component: DatosRecaudoComponent, }, 
+  { path:'recaudos/inforecaudo', component: InfoRecaudoComponent, }, 
+  { path:'recaudos/selectcompany', component: SelectCompanyComponent, }, 
 
   { path: '**', redirectTo: 'login',pathMatch: 'full', }
   

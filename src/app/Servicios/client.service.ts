@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ClientService {
 
-  private searchClientApi = 'https://m4b60phktl.execute-api.us-east-1.amazonaws.com/banquito/client-microservice/api/v1/clients/'; // URL del endpoint
+  private searchClientApi = 'http://core-cobros-alb-538320160.us-east-1.elb.amazonaws.com/client-microservice/api/v1/clients/'; // URL del endpoint
   constructor(private http: HttpClient) { }
   searchAcount(clientNumber:string):Observable<any>{
     return this.http.get<any>(this.searchClientApi + clientNumber);
