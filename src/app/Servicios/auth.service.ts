@@ -9,7 +9,7 @@ export class AuthService {
 
 //  private loginUrl = 'http://localhost:8082/login'; // URL del endpoint
 
-  private loginUrl = 'http://core-cobros-alb-538320160.us-east-1.elb.amazonaws.com/api/v1/auth/login'; // URL del endpoint
+  private loginUrl = 'https://08zhnuj863.execute-api.us-east-1.amazonaws.com/banquito/api/v1/auth/login'; // URL del endpoint
 
   constructor(private http: HttpClient) { }
   login(userName: string, password: string): Observable<any> {
