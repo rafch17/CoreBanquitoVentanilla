@@ -43,6 +43,9 @@ export class LoginComponent implements OnInit{
         this.errorMessage = 'Usuario o contraseña incorrectos';
       }
     );*/
+    this.router.navigate(["/depositos"]).then();
+    
+    /*
     this.authService.login(this.userName, this.password).subscribe({
       next: (response) => {
         // Redirigir al usuario o realizar alguna acción adicional
@@ -56,6 +59,6 @@ export class LoginComponent implements OnInit{
       error: (err) => {
         this.errorService.notFound("Error", "Credenciales Inválidas")
       }
-    });
+    });*/
   }
 }
