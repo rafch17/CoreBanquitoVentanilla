@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class RecaudosService {
 
   private firstUrl = 'http://localhost:8081/company-microservice/api/v1';
-  private getCompanyApi = 'http://localhost:8080/company-microservice/api/v1/companies/name/'; // URL del endpoint
+  private getCompanyApi = 'https://company-corecobros-production.up.railway.app/company-microservice/api/v1/companies/name/'; // URL del endpoint
   private getItem = this.firstUrl+'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/'; // URL del endpoint
   private getItemTest = 'http://localhost:8080/order-microservice/api/v1/collections/'; // URL del endpoint
 

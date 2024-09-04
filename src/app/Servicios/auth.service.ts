@@ -9,7 +9,7 @@ export class AuthService {
 
 //  private loginUrl = 'http://localhost:8082/login'; // URL del endpoint
 
-  private loginUrl = 'http://localhost:8080/company-microservice/api/v1/users/auth'; // URL del endpoint
+  private loginUrl = 'https://company-corecobros-production.up.railway.app/company-microservice/api/v1/users/auth'; // URL del endpoint
 
   constructor(private http: HttpClient) { }
   login(userName: string, password: string): Observable<any> {
