@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -8,8 +8,10 @@ import { Observable } from 'rxjs';
 export class RecaudosService {
 
   private firstUrl = 'http://localhost:8081/company-microservice/api/v1';
-  private getCompanyApi = this.firstUrl+'/companies/name/'; // URL del endpoint
+  private getCompanyApi = 'http://localhost:8080/company-microservice/api/v1/companies/name/'; // URL del endpoint
   private getItem = this.firstUrl+'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/'; // URL del endpoint
+  private getItemTest = 'http://localhost:8080/order-microservice/api/v1/collections/'; // URL del endpoint
+
   private getItemId = this.firstUrl+'https://corecobros-receivables.us-east-1.elasticbeanstalk.com/order-items/'; // URL del endpoint
   private transactionApi = this.firstUrl+"https://localhost:8080/api/account-transactions"
   private getOrderApi=this.firstUrl+"https://corecobros-receivables.us-east-1.elasticbeanstalk.com/orders/";
@@ -23,10 +25,14 @@ export class RecaudosService {
   constructor(private http: HttpClient) { }
 
   searchCompanyByName(companyName: string): Observable<any> {
-    return this.http.get<any>(this.getCompanyApi + companyName);
+    const token = localStorage.getItem('bearer');  // Reemplaza 'your-jwt-token' por el token JWT real
+    const headers = new HttpHeaders({
+      'Authorization': `${token}`
+    });
+    return this.http.get<any>(this.getCompanyApi + companyName,{headers});
   }
   getItemOrder(companyId:string,contrapartida:string): Observable<any> {
-    return this.http.get<any>(this.getItem+'order-items/search/by-counterpart?counterpart='+contrapartida+'&companyId='+companyId);
+    return this.http.get<any>(this.getItemTest+'search?counterpart='+contrapartida+'&companyId='+companyId);
   }
   getOrderById(order:string): Observable<any> {
     return this.http.get<any>(this.getOrderApi+order);
@@ -45,6 +51,9 @@ export class RecaudosService {
   }
   sendPayment(paymentnData:any):Observable<any>{
     return this.http.post<any>(this.sendPaymentApi, paymentnData);
+  }
+  sendRecaudo(itemOrderId:Number,account:String):Observable<any>{
+    return this.http.put<any>(`http://localhost:8080/order-microservice/api/v1/collections/${itemOrderId}/${account}`,{});
   }
   setOerderItem(id:string, estado:string):Observable<any>{
     return this.http.put<any>("https://corecobros-receivables.us-east-1.elasticbeanstalk.com/order-items/"+id+"/status?status="+estado,null)

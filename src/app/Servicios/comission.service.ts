@@ -9,7 +9,7 @@ export class ComissionService {
 
   private getReceibavleComissionByReceivableApi = 'https://corecobros-commission.us-east-2.elasticbeanstalk.com/receivablecommissions/receivable/'; // URL del endpoint
   
-  private getcommisionById = 'https://corecobros-commission.us-east-2.elasticbeanstalk.com/commissions/'; // URL del endpoint
+  private getcommisionById = 'http://localhost:7070/commission-microservice/api/v1/commissions/'; // URL del endpoint
 
   private sendPaymentComissionApi = 'https://corecobros-commission.us-east-2.elasticbeanstalk.com/paycommrecords'; // URL del endpoint
 
@@ -20,7 +20,7 @@ export class ComissionService {
     return this.http.get<any>(this.getReceibavleComissionByReceivableApi + receId);
   }
   searchComisionesById(id:string){
-    return this.http.get<any>(this.getcommisionById + id);
+    return this.http.get<any>(this.getcommisionById + 'IPX0046735');
     
   }
   sendPaymentCommision(paymentnData:any):Observable<any>{

@@ -43,22 +43,22 @@ export class LoginComponent implements OnInit{
         this.errorMessage = 'Usuario o contraseña incorrectos';
       }
     );*/
-    this.router.navigate(["/depositos"]).then();
+    //this.router.navigate(["/depositos"]).then();
     
-    /*
+    
     this.authService.login(this.userName, this.password).subscribe({
       next: (response) => {
         // Redirigir al usuario o realizar alguna acción adicional
         console.log(response);
         this.router.navigate(["/depositos"]).then();
-        if (response && typeof response.subscribe === 'function') {
+        /*if (response && typeof response.subscribe === 'function') {
           this.errorService.notFound("Error", "Credenciales Inválidas")
           
-        }
+        }*/
       },
       error: (err) => {
         this.errorService.notFound("Error", "Credenciales Inválidas")
       }
-    });*/
+    });
   }
 }

@@ -32,9 +32,7 @@
                   <div class="col-12  "><b>EMPRESA: </b> {{companyData.companyName}}</div>
                   <div class="col-12  "><b>N. CONTRAPARTIDA: </b>{{contrapartida.counterpart}} </div>
                   <div class="col-12  "><b>CLIENTE: </b> {{contrapartida.debtorName}}</div>
-                  <div class="col-12  "><b>C.I/RUC: </b> {{contrapartida.identification}}</div>
-                  <div class="col-12  "><b>FECHA VENCIMIENTO: </b> {{order.dueDate}}</div>
-                  <div class="col-12  "><b>VALOR ADEUDADO: </b>$ {{contrapartida.owedAmount}}</div>
+                  <div class="col-12  "><b>VALOR ADEUDADO: </b>$ {{contrapartida.collectionAmount}}</div>
                   <div class="col-12  "><b>COMISIÓN: </b>$ {{sumaComisiones}}</div>
                   <div class="col-12  "><b>IVA: </b>$ {{iva}}</div>
   
@@ -45,7 +43,7 @@
 
 
                   <div class="my-2 d-flex align-items-center justify-content-center">
-                    <button type="button" class="btn btn-warning  rounded-pill" (click)="makeDeposit()" >Procesar</button>
+                    <button type="button" class="btn btn-warning  rounded-pill" (click)="makeDeposit2()" >Procesar</button>
                   </div>
                 </div>
               </div>

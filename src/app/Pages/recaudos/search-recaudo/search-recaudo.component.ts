@@ -32,7 +32,8 @@ export class SearchRecaudoComponent implements OnInit {
   
   getItem(): void {
     console.log(this.companyData.id+this.contrapartida.toString())
-    this.recaudoService.getItemOrder(this.companyData.id,this.contrapartida.toString()).subscribe({
+    this.recaudoService.getItemOrder(this.companyData.uniqueId
+      ,this.contrapartida.toString()).subscribe({
       next: (data) => {
         if (data.length==0) {
           this.errorService.notFound("Error", "No existe el registro de recaudo");

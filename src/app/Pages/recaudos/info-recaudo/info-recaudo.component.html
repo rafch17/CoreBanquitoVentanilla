@@ -31,9 +31,8 @@
                 <div class="col-6">
                   
                   <div class="col-12  "><b>N.CONTRAPARTIDA: </b> {{this.data.contrapartida.counterpart}}</div>
-                  <div class="col-12  "><b>FECHA PAGO: </b> {{this.data.paymentRecord.paymentDate}}</div>
-                  <div class="col-12  "><b>EMPRESA: </b> {{this.data.contrapartida.companyName}}</div>
-                  <div class="col-12  "><b>C.I/RUC: </b> {{this.data.contrapartida.identification}}</div>
+                  <div class="col-12  "><b>FECHA PAGO: </b> {{this.data.invoice.paymentDate}}</div>
+                  <div class="col-12  "><b>EMPRESA: </b> {{this.data.company.companyName}}</div>
                   <div class="col-12  "><b>Cliente: </b> {{this.data.contrapartida.debtorName}}</div>
                   
 
@@ -43,10 +42,10 @@
                 <div class="col-6 mt-2">
                   
                   
-                  <div class="col-12  "><b>TOTAL PAGADO: </b> ${{this.data.transaction.ammount+this.data.transaction.ammount+comission.debtorValue*0.12}}</div>
-                  <div class="col-12  mx-5"><b>MONTO: </b> ${{this.data.transaction.ammount}}</div>
-                  <div class="col-12  mx-5"><b>COMISIÓN: </b> ${{this.data.transaction.ammount}}</div>
-                  <div class="col-12  mx-5"><b>IVA: </b> ${{comission.debtorValue*0.12}}</div>
+                  <div class="col-12  "><b>TOTAL PAGADO: </b> ${{this.data.totalCompleto}}</div>
+                  <div class="col-12  mx-5"><b>MONTO: </b> ${{this.data.collectionAmount}}</div>
+                  <div class="col-12  mx-5"><b>COMISIÓN: </b> ${{this.data.sumaComisiones}}</div>
+                  <div class="col-12  mx-5"><b>IVA: </b> ${{this.data.iva}}</div>
 
 
 

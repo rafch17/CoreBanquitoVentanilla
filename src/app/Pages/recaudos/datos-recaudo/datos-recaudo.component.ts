@@ -90,6 +90,24 @@ export class DatosRecaudoComponent implements OnInit {
       }
     });
   }
+  makeDeposit2() {
+    console.log(this.contrapartida.id+'   '+this.companyData.accounts[0].codeInternalAccount);
+    
+    this.recaudoService.sendRecaudo(this.contrapartida.id,this.companyData.accounts[0].codeInternalAccount).subscribe({
+      next: (data) => {
+        this.dataFinal = { invoice: data,contrapartida:this.contrapartida,company:this.companyData,sumaComisiones:this.sumaComisiones,iva:this.iva,totalCompleto:this.totalCompleto, collectionAmount:this.contrapartida.collectionAmount };
+        console.log(this.dataFinal);
+        this.errorService.exito("Completo", "Pago realizado exitosamente");
+        this.router.navigateByUrl("recaudos/inforecaudo", { state: this.dataFinal });
+        //todo:
+      },
+      error: (err) => {
+        this.errorService.notFound("Error", "El recaudo no precedio")
+      }
+    })
+
+  }
+
   makeDeposit() {
     //this.router.navigateByUrl("recaudos/inforecaudo")
 
@@ -233,6 +251,11 @@ export class DatosRecaudoComponent implements OnInit {
       this.cargarOrder();
 
     });
+    this.commisionService.searchComisionesById('').subscribe((data)=>{
+      this.sumaComisiones=data.debtorValue;
+      this.iva=this.sumaComisiones*0.15;
+      this.totalCompleto=this.sumaComisiones+this.iva+this.contrapartida.collectionAmount;
+    })
   }
   cargarOrder() {
     this.recaudoService.getOrderById(this.itemOrder.orderId).subscribe((data) => {
@@ -298,6 +321,7 @@ export class DatosRecaudoComponent implements OnInit {
       try {
         const resultado = await this.commisionService.searchComisionesById(objeto.commissionId.toString()).toPromise();
         resultados.push(resultado);
+        console.log(resultado);
       } catch (error) {
         console.error(`Error al buscar receivable con ID ${objeto.receivableId}`, error);
       }
