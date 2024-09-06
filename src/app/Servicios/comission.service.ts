@@ -9,7 +9,7 @@ export class ComissionService {
 
   private getReceibavleComissionByReceivableApi = 'https://corecobros-commission.us-east-2.elasticbeanstalk.com/receivablecommissions/receivable/'; // URL del endpoint
   
-  private getcommisionById = 'http://localhost:7070/commission-microservice/api/v1/commissions/'; // URL del endpoint
+  private getcommisionById = 'https://commision-corecobros-production.up.railway.app/commission-microservice/api/v1/commissions/'; // URL del endpoint
 
   private sendPaymentComissionApi = 'https://corecobros-commission.us-east-2.elasticbeanstalk.com/paycommrecords'; // URL del endpoint
 

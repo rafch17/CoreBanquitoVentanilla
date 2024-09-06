@@ -8,8 +8,8 @@ import { Observable, catchError, map, throwError } from 'rxjs';
 export class AccountService {
 
   private searchAccountApi = 'https://corebanquito-account.us-east-1.elasticbeanstalk.com/accounts/by-unique-code/'; // URL del endpoint
-  private transactionApi= "https://08zhnuj863.execute-api.us-east-1.amazonaws.com/banquito/account-microservice/api/v1/account-transactions"
-  private searchAccountApiTest = 'https://08zhnuj863.execute-api.us-east-1.amazonaws.com/banquito/account-microservice/api/v1/accounts/'; // URL del endpoint
+  private transactionApi= "https://account-corebanquito-production.up.railway.app/account-microservice/api/v1/account-transactions"
+  private searchAccountApiTest = 'https://account-corebanquito-production.up.railway.app/account-microservice/api/v1/accounts/'; // URL del endpoint
 
   // private searchAccountApi = 'http://corebanquito-account.us-east-1.elasticbeanstalk.com/accounts/by-unique-code/'; // URL del endpoint
   //private transactionApi= "http://corebanquito-account.us-east-1.elasticbeanstalk.com/account-transactions"
